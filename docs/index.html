@@ -16,7 +16,7 @@
       --vatsim: #1a4b8c;
       --frequency: #4b0082;
     }
-	    .language-switcher {
+    .language-switcher {
       position: absolute;
       top: 15px;
       right: 15px;
@@ -25,6 +25,7 @@
       background: rgba(255, 255, 255, 0.1);
       padding: 5px;
       border-radius: 30px;
+      z-index: 100;
     }
     .lang-btn {
       background: none;
@@ -83,6 +84,7 @@
       background: #003366;
       padding: 10px 0;
       box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      position: relative;
     }
     .nav-container {
       max-width: 1200px;
@@ -110,45 +112,6 @@
     }
     .home-link:hover {
       background-color: #0055aa;
-    }
-
-    /* Language switcher */
-    .language-switcher {
-      position: absolute;
-      top: 15px;
-      right: 15px;
-      display: flex;
-      gap: 5px;
-      background: rgba(255, 255, 255, 0.1);
-      padding: 5px;
-      border-radius: 30px;
-    }
-    .lang-btn {
-      background: none;
-      border: none;
-      cursor: pointer;
-      padding: 0;
-      transition: all 0.3s;
-    }
-    .lang-flag {
-      height: 20px;
-      width: 30px;
-      border-radius: 3px;
-      transition: transform 0.2s;
-      box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
-    }
-    .lang-btn.active .lang-flag {
-      transform: scale(1.1);
-      box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
-    }
-    .lang-btn:not(.active) .lang-flag {
-      opacity: 0.6;
-      filter: grayscale(30%);
-    }
-    .lang-btn:hover .lang-flag {
-      transform: scale(1.1);
-      opacity: 1;
-      filter: none;
     }
 
     /* Заголовок */
@@ -291,6 +254,14 @@
   <div class="airport-signature">
   </div>
   <nav class="nav-menu">
+    <div class="language-switcher">
+      <button class="lang-btn active" data-lang="ru" onclick="switchLanguage('ru')">
+        <img src="src/RU.jpg" alt="Русский" class="lang-flag" title="Русский">
+      </button>
+      <button class="lang-btn" data-lang="en" onclick="switchLanguage('en')">
+        <img src="src/UK.jpg" alt="English" class="lang-flag" title="English">
+      </button>
+    </div>
     <div class="nav-container">
       <a href="index.html" class="nav-link home-link" id="home-link">Главная</a>
       <a href="unnt.html" class="nav-link">UNNT</a>
@@ -304,14 +275,6 @@
     </div>
   </nav>
   <header>
-    <div class="language-switcher">
-      <button class="lang-btn active" data-lang="ru" onclick="switchLanguage('ru')">
-        <img src="src/RU.jpg" alt="Русский" class="lang-flag" title="Русский">
-      </button>
-      <button class="lang-btn" data-lang="en" onclick="switchLanguage('en')">
-        <img src="src/UK.jpg" alt="English" class="lang-flag" title="English">
-      </button>
-    </div>
     <div class="logo-container">
       <img src="src/UNNT_ACC.png" alt="Логотип UNNT ACC" class="logo">
       <img src="src/VATRUS.png" alt="Логотип VATSIM" class="logo">
@@ -434,9 +397,7 @@
         "support-title": "Support Services",
         "support-text": "Our controllers are always ready to help. For assistance, join our Discord server and contact team members.",
         "footer-text": "© 2025 Tolmachevo Airport (Novosibirsk). All rights reserved. Not affiliated with real aviation services.",        
-	"home-button": "Home",
         "home-link": "Home"
-	
       },
       ru: {
         "main-title": "Региональный центр Новосибирск",
@@ -466,7 +427,6 @@
         "support-title": "Службы поддержки",
         "support-text": "Наши диспетчеры всегда готовы помочь. Для получения помощи, присоединяйтесь к нашему Discord-серверу и обратитесь к членам команды.",
         "footer-text": "© 2025 Аэропорт Толмачёво (Новосибирск). Все права защищены. Не связан с реальными авиационными службами.",
-	"home-button": "Главная",
         "home-link": "Главная"
       }
     };
@@ -482,10 +442,17 @@
       const elements = document.querySelectorAll('[id]');
       elements.forEach(element => {
         const key = element.id;
-        if (translations[lang][key]) {
-          element.innerHTML = translations[lang][key];
+        if (translations[lang] && translations[lang][key]) {
+          if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
+            element.value = translations[lang][key];
+          } else {
+            element.innerHTML = translations[lang][key];
+          }
         }
       });
+      
+      // Update HTML lang attribute
+      document.documentElement.lang = lang;
       
       // Save language preference
       localStorage.setItem('preferredLanguage', lang);
@@ -497,12 +464,6 @@
       const savedLang = localStorage.getItem('preferredLanguage');
       const browserLang = navigator.language.startsWith('ru') ? 'ru' : 'en';
       const defaultLang = savedLang || browserLang;
-      
-      // Activate the corresponding button
-      const defaultBtn = document.querySelector(`.lang-btn[data-lang="${defaultLang}"]`);
-      if (defaultBtn) {
-        defaultBtn.classList.add('active');
-      }
       
       // Set the language
       switchLanguage(defaultLang);
