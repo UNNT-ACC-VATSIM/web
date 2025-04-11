@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>В разработке</title>
+  <title id="page-title">В разработке</title>
   <style>
     :root {
       --primary: #0066cc;
@@ -35,6 +35,7 @@
       background: #003366;
       padding: 10px 0;
       box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      position: relative;
     }
     .nav-container {
       max-width: 1200px;
@@ -62,6 +63,47 @@
     }
     .home-link:hover {
       background-color: #0055aa;
+    }
+
+    /* Language switcher */
+    .language-switcher {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      display: flex;
+      gap: 5px;
+      background: rgba(255, 255, 255, 0.1);
+      padding: 5px;
+      border-radius: 30px;
+    }
+    .lang-btn {
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      transition: all 0.3s;
+    }
+    .lang-flag {
+      height: 20px;
+      width: 30px;
+      border-radius: 3px;
+      transition: all 0.3s;
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+    }
+    .lang-btn.active .lang-flag {
+      transform: scale(1.1);
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+      opacity: 1;
+      filter: none;
+    }
+    .lang-btn:not(.active) .lang-flag {
+      opacity: 0.6;
+      filter: grayscale(30%);
+    }
+    .lang-btn:hover .lang-flag {
+      transform: scale(1.1);
+      opacity: 1;
+      filter: none;
     }
 
     /* Основной контент */
@@ -122,6 +164,10 @@
       h1 {
         font-size: 2.5em;
       }
+      .lang-flag {
+        height: 25px;
+        width: 35px;
+      }
     }
   </style>
 </head>
@@ -129,7 +175,7 @@
 
   <nav class="nav-menu">
     <div class="nav-container">
-      <a href="index.html" class="nav-link home-link">На главную</a>
+      <a href="index.html" class="nav-link home-link" id="home-link">На главную</a>
       <a href="unnt.html" class="nav-link">UNNT</a>
       <a href="error.html" class="nav-link">UNOO</a>
       <a href="error.html" class="nav-link">UNBG</a>
@@ -139,15 +185,79 @@
       <a href="error.html" class="nav-link">UNWW</a>
       <a href="error.html" class="nav-link">UNSS</a>
     </div>
+    <div class="language-switcher">
+      <button class="lang-btn active" data-lang="ru" onclick="switchLanguage('ru')">
+        <img src="src/RU.jpg" alt="Русский" class="lang-flag" title="Русский">
+      </button>
+      <button class="lang-btn" data-lang="en" onclick="switchLanguage('en')">
+        <img src="src/UK.jpg" alt="English" class="lang-flag" title="English">
+      </button>
+    </div>
   </nav>
 
   <div class="content">
     <div class="message-box">
-      <h1>В разработке</h1>
-      <p>Эта страница находится в процессе создания. Возвращайтесь позже!</p>
-      <a href="index.html" class="home-button">На главную</a>
+      <h1 id="main-heading">В разработке</h1>
+      <p id="main-text">Эта страница находится в процессе создания. Возвращайтесь позже!</p>
+      <a href="index.html" class="home-button" id="home-button">На главную</a>
     </div>
   </div>
 
+  <script>
+    // Translations object
+    const translations = {
+      en: {
+        "page-title": "Under Development",
+        "main-heading": "Under Development",
+        "main-text": "This page is currently being developed. Please check back later!",
+        "home-button": "Home",
+        "home-link": "Home"
+      },
+      ru: {
+        "page-title": "В разработке",
+        "main-heading": "В разработке",
+        "main-text": "Эта страница находится в процессе создания. Возвращайтесь позже!",
+        "home-button": "На главную",
+        "home-link": "На главную"
+      }
+    };
+
+    // Function to switch language
+    function switchLanguage(lang) {
+      // Update button states
+      document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.lang === lang);
+      });
+      
+      // Update content
+      const elements = document.querySelectorAll('[id]');
+      elements.forEach(element => {
+        const key = element.id;
+        if (translations[lang][key]) {
+          element.innerHTML = translations[lang][key];
+        }
+      });
+      
+      // Save language preference
+      localStorage.setItem('preferredLanguage', lang);
+    }
+
+    // Set default language
+    document.addEventListener('DOMContentLoaded', function() {
+      // Check for saved preference or use browser language
+      const savedLang = localStorage.getItem('preferredLanguage');
+      const browserLang = navigator.language.startsWith('ru') ? 'ru' : 'en';
+      const defaultLang = savedLang || browserLang;
+      
+      // Activate the corresponding button
+      const defaultBtn = document.querySelector(`.lang-btn[data-lang="${defaultLang}"]`);
+      if (defaultBtn) {
+        defaultBtn.classList.add('active');
+      }
+      
+      // Set the language
+      switchLanguage(defaultLang);
+    });
+  </script>
 </body>
 </html>
