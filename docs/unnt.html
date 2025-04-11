@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Аэропорт Новосибирск (Толмачёво)</title>
+  <style>
+    :root {
+      --primary: #0066cc;
+      --background: #f0f8ff;
+      --text: #2a2a2a;
+      --card-bg: #ffffff;
+      --radius: 20px;
+      --discord: #5865F2;
+      --simulator: #8a2be2;
+      --frequency: #4b0082;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "Segoe UI", sans-serif;
+      background-color: var(--background);
+      color: var(--text);
+      line-height: 1.6;
+      padding: 0;
+    }
+
+    .airport-signature {
+      background: #002244;
+      color: white;
+      text-align: center;
+      padding: 8px 0;
+      font-size: 0.9em;
+      font-weight: bold;
+    }
+
+    .nav-menu {
+      background: #003366;
+      padding: 10px 0;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 5px;
+      padding: 0 10px;
+    }
+
+    .nav-link {
+      color: white;
+      text-decoration: none;
+      padding: 6px 10px;
+      border-radius: var(--radius);
+      transition: background-color 0.3s;
+      font-size: 0.9em;
+    }
+
+    .home-link {
+      background-color: #004080;
+      font-weight: bold;
+    }
+
+    .nav-link:hover {
+      background-color: rgba(255,255,255,0.2);
+    }
+
+    .home-link:hover {
+      background-color: #0055aa;
+    }
+
+    header {
+      background: var(--primary);
+      color: white;
+      padding: 25px 15px;
+      text-align: center;
+      border-radius: 0;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      margin-bottom: 20px;
+      background-image: linear-gradient(135deg, #0066cc, #004080);
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+
+    .logo {
+      height: 70px;
+      width: auto;
+    }
+
+    main {
+      background-color: var(--card-bg);
+      padding: 20px;
+      max-width: 900px;
+      margin: 0 auto;
+      border-radius: 0;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.05);
+    }
+
+    h1 {
+      font-size: 1.8em;
+      margin-bottom: 8px;
+    }
+
+    h2 {
+      font-size: 1.5em;
+      margin: 20px 0 12px;
+      color: var(--primary);
+    }
+
+    h3 {
+      font-size: 1.2em;
+      margin: 15px 0 8px;
+      color: var(--primary);
+    }
+
+    ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    ul li {
+      background: #e6f2ff;
+      margin: 6px 0;
+      padding: 10px 12px;
+      border-radius: 15px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
+      border-left: 4px solid var(--primary);
+    }
+
+    .frequency-list {
+      columns: 1;
+    }
+
+    .frequency-list li {
+      break-inside: avoid;
+      margin-bottom: 6px;
+    }
+
+    .frequency {
+      font-weight: bold;
+      color: var(--frequency);
+    }
+
+    .warning, .simulator, .info-box {
+      padding: 12px;
+      border-radius: 15px;
+      margin: 15px 0;
+      font-size: 0.95em;
+    }
+
+    .warning {
+      background: #fff3e6;
+      border-left: 4px solid #ff9900;
+    }
+
+    .simulator {
+      background: #f0e6ff;
+      border-left: 4px solid var(--simulator);
+    }
+
+    .info-box {
+      background: #e6f7ff;
+      border-left: 4px solid var(--primary);
+    }
+
+    .discord-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background-color: var(--discord);
+      color: white;
+      padding: 8px 15px;
+      border-radius: 15px;
+      text-decoration: none;
+      font-weight: bold;
+      margin-top: 12px;
+      transition: background-color 0.3s;
+      font-size: 0.9em;
+    }
+
+    .discord-icon {
+      height: 20px;
+      width: auto;
+    }
+
+    .simulator-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background-color: var(--simulator);
+      color: white;
+      padding: 8px 15px;
+      border-radius: 15px;
+      text-decoration: none;
+      font-weight: bold;
+      margin: 8px 0;
+      transition: background-color 0.3s;
+      text-align: center;
+    }
+
+    .simulator-icon {
+      height: 25px;
+      width: auto;
+    }
+
+    .discord-link:hover {
+      background-color: #4752C4;
+    }
+
+    .simulator-link:hover {
+      background-color: #7b29d1;
+    }
+
+    p {
+      margin-top: 8px;
+      font-size: 1em;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 30px;
+      padding: 15px;
+      font-size: 0.85em;
+      color: #888;
+    }
+
+    .image-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 15px;
+      margin: 20px 0;
+    }
+
+    .image-grid img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 15px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s;
+    }
+
+    .map-image {
+      width: 100%;
+      height: auto;
+      border-radius: 15px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      margin: 15px 0;
+    }
+
+    .caption {
+      text-align: center;
+      font-size: 0.85em;
+      color: #666;
+      margin-top: 5px;
+    }
+
+    /* Стили для планшетов и десктопов */
+    @media (min-width: 768px) {
+      .airport-signature {
+        font-size: 1em;
+        padding: 10px 0;
+      }
+      
+      .nav-menu {
+        padding: 15px 0;
+      }
+      
+      .nav-container {
+        gap: 10px;
+        padding: 0 20px;
+      }
+      
+      .nav-link, .home-link {
+        padding: 8px 15px;
+        font-size: 1em;
+      }
+      
+      header {
+        padding: 40px 20px;
+        border-radius: 0 0 var(--radius) var(--radius);
+      }
+      
+      .logo {
+        height: 90px;
+      }
+      
+      main {
+        padding: 30px;
+        border-radius: var(--radius);
+      }
+      
+      h1 {
+        font-size: 2.5em;
+      }
+      
+      h2 {
+        font-size: 1.8em;
+      }
+      
+      h3 {
+        font-size: 1.4em;
+      }
+      
+      .frequency-list {
+        columns: 2;
+      }
+      
+      .warning, .simulator, .info-box {
+        padding: 15px;
+        font-size: 1em;
+      }
+      
+      .discord-link {
+        padding: 10px 20px;
+        font-size: 1em;
+      }
+      
+      .discord-icon {
+        height: 25px;
+      }
+      
+      .simulator-link {
+        display: inline-flex;
+        margin: 10px 5px;
+      }
+      
+      .image-grid {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      }
+    }
+
+    /* Дополнительные медиазапросы для очень маленьких экранов */
+    @media (max-width: 400px) {
+      .logo {
+        height: 60px;
+      }
+      
+      h1 {
+        font-size: 1.5em;
+      }
+      
+      h2 {
+        font-size: 1.3em;
+      }
+      
+      .discord-link {
+        font-size: 0.8em;
+      }
+      
+      .image-grid img {
+        height: 150px;
+      }
+      
+      .simulator-link {
+        font-size: 0.9em;
+      }
+      
+      .simulator-icon {
+        height: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="airport-signature">
+  </div>
+
+  <nav class="nav-menu">
+    <div class="nav-container">
+      <a href="main.html" class="nav-link ">Главная</a>
+      <a href="UNNT.html" class="nav-link home-link">UNNT</a>
+      <a href="error.html" class="nav-link">UNOO</a>
+      <a href="error.html" class="nav-link">UNBG</a>
+      <a href="error.html" class="nav-link">UNBB</a>
+      <a href="error.html" class="nav-link">UNTT</a>
+      <a href="error.html" class="nav-link">UNEE</a>
+      <a href="error.html" class="nav-link">UNWW</a>
+      <a href="error.html" class="nav-link">UNSS</a>
+    </div>
+  </nav>
+
+  <header>
+    <div class="logo-container">
+      <img src="src/UNNT_ACC.png" alt="Логотип UNNT ACC" class="logo">
+    </div>
+    <h1>Аэропорт Новосибирск (Толмачёво)</h1>
+    <p>Крупнейший авиационный хаб за Уралом</p>
+    <a href="https://discord.gg/unnt" class="discord-link" target="_blank">
+      <img src="src/discord2.png" alt="Discord" class="discord-icon">
+      Присоединиться к Discord-сообществу
+    </a>
+  </header>
+
+  <main>
+    <div class="simulator">
+      <h2>Рекомендуемые сценарии для авиасимуляторов</h2>
+      <p>Для наиболее точного отображения аэропорта Толмачёво в авиасимуляторах используйте только эти официальные сценарии:</p>
+      
+      <div>
+        <a href="https://modsfire.com/wSf94iQL4oo0vPv" class="simulator-link" target="_blank">
+          <img src="src/x_plane.png" alt="X-Plane" class="simulator-icon">
+          Скачать для X-Plane 11/12
+        </a>
+        <a href="https://modsfire.com/0x6Ekl6fT1C5C4h" class="simulator-link" target="_blank">
+          <img src="src/msfs_znak.png" alt="MSFS" class="simulator-icon">
+          Скачать для MSFS 2020
+        </a>
+      </div>
+      
+      <p style="margin-top: 12px;">Эти сценарии содержат точную модель аэропорта с учётом всех особенностей инфраструктуры и навигации.</p>
+    </div>
+
+    <div class="info-box">
+      <h2>Основные параметры</h2>
+      <ul>
+        <li><strong>Код ИКАО:</strong> UNNT</li>
+        <li><strong>Код ИАТА:</strong> OVB</li>
+        <li><strong>Высота над уровнем моря:</strong> 368 футов (111 метров)</li>
+        <li><strong>ВПП:</strong> 2 полосы (07/25 длиной 3600м и 16/34 длиной 3600м)</li>
+        <li><strong>Пассажиропоток:</strong> более 6 млн человек в год</li>
+        <li><strong>Класс:</strong> международный аэропорт федерального значения</li>
+      </ul>
+    </div>
+
+    <div class="image-grid">
+      <div>
+        <img src="src/UNNT_terminal.jpg" alt="Терминал аэропорта Толмачёво">
+        <div class="caption">Пассажирский терминал аэропорта</div>
+      </div>
+      <div>
+        <img src="src/UNNT_visota.jpg" alt="Аэропорт с высоты">
+        <div class="caption">Вид на аэропорт с воздуха</div>
+      </div>
+    </div>
+
+    <h2>Радиочастоты аэропорта</h2>
+    <ul class="frequency-list">
+      <li><strong>UNNT_N_CTR:</strong> <span class="frequency">126.900</span></li>
+      <li><strong>UNNT_E_CTR:</strong> <span class="frequency">126.100</span></li>
+      <li><strong>UNNT_W_CTR:</strong> <span class="frequency">135.500</span></li>
+      <li><strong>UNNT_C_CTR:</strong> <span class="frequency">132.300</span></li>
+      <li><strong>UNNT_APP:</strong> <span class="frequency">127.500</span></li>
+      <li><strong>UNNT_R_APP:</strong> <span class="frequency">122.000</span></li>
+      <li><strong>UNNT_1_TWR (Только ВПП 07/25):</strong> <span class="frequency">118.500</span></li>
+      <li><strong>UNNT_2_TWR (Только ВПП 16/34):</strong> <span class="frequency">126.700</span></li>
+      <li><strong>UNNT_GND:</strong> <span class="frequency">121.700</span></li>
+      <li><strong>UNNT_DEL:</strong> <span class="frequency">135.400</span></li>
+      <li><strong>UNNT_ATIS:</strong> <span class="frequency">131.300</span></li>
+    </ul>
+    
+    <div class="info-box">
+      <h2>Высота и эшелон перехода</h2>
+      <ul>
+        <li><strong>Высота перехода (Transition Altitude):</strong> 6000 футов (1720 метров)</li>
+        <li><strong>Эшелон перехода (Transition Level) зависит от QNH:</strong>
+          <ul>
+            <li><strong>FL70</strong> - если QNH ≥ 1013 гПа</li>
+            <li><strong>FL80</strong> - если 977 гПа < QNH < 1013 гПа</li>
+            <li><strong>FL90</strong> - если QNH ≤ 977 гПа</li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+
+    <div class="warning">
+      <h2>Важное ограничение</h2>
+      <p>На части перрона между рулёжными дорожками Bravo и Charlie <strong>запрещено руление воздушным судам с размахом крыла 48 метров и более</strong> из-за ограниченного пространства.</p>
+      <p>Это ограничение особенно актуально для таких самолётов как Boeing 747, Airbus A340 и аналогичных широкофюзеляжных судов.</p>
+      
+      <img src="src/perron_ogran.png" alt="Карта зон, где запрещено руление для ВС с размахом крыла 48+ метров" class="map-image">
+      <div class="caption">Карта зон с ограничениями для крупных ВС</div>
+    </div>
+
+    <h2>Особенности инфраструктуры</h2>
+    <ul>
+      <li><strong>Взлётно-посадочные полосы:</strong> 
+        <ul>
+          <li>ВПП 07/25: 3600м × 60м, PCN 70/R/B/W/T</li>
+          <li>ВПП 16/34: 3600м × 60м, PCN 80/R/B/W/T</li>
+        </ul>
+        <p>Обе ВПП способны принимать воздушные суда типа Airbus A380 и Ан-225 "Мрия"</p>
+      </li>
+      <li><strong>Перрон:</strong> 
+        <ul>
+          <li>Всего 87 стояночных мест</li>
+          <li>7 специализированных стоянок для воздушных судов типа A380</li>
+          <li>16 стоянок для широкофюзеляжных судов (Boeing 747, 777, Airbus A330, A340 и др.)</li>
+        </ul>
+      </li>
+      <li><strong>Рулёжные дорожки:</strong> 
+        <ul>
+          <li>Alpha, Bravo, Charlie, Delta</li>
+          <li><strong>Скоростные съезды:</strong> L (Lima) и H (Hotel)</li>
+        </ul>
+      </li>
+      <li><strong>Навигация:</strong> оборудован по категории II ICAO</li>
+      <li><strong>Грузовой терминал:</strong> пропускная способность 120 тыс. тонн в год</li>
+    </ul>
+
+    <img src="src/stands_UNNT.png" alt="Карта стоянок с указанием, какие ВС могут занимать какие стоянки" class="map-image">
+    <div class="caption">Карта стоянок с классификацией по типам ВС</div>
+
+    <img src="src/A380_stands.png" alt="Карта разрешённых маршрутов руления для A380" class="map-image">
+    <div class="caption">Стоянки для Airbus A380</div>
+
+    <div class="image-grid">
+      <div>
+        <img src="src/VPP_1634.jpg" alt="ВПП аэропорта">
+        <div class="caption">Взлётно-посадочная полоса 16/34</div>
+      </div>
+      <div>
+        <img src="src/A380_UNNT.jpg" alt="A380 в Толмачёво">
+        <div class="caption">Airbus A380 в аэропорту Толмачёво</div>
+      </div>
+    </div>
+
+    <h2>Интересные факты</h2>
+    <p>Аэропорт Толмачёво был основан в 1957 году и изначально использовался как военный аэодром. Только в 1963 году он получил статус гражданского аэропорта.</p>
+    <p>В 2017 году аэропорт установил рекорд, обслужив за сутки 25 тысяч пассажиров, что стало абсолютным максимумом для сибирского региона.</p>
+    <p>Аэропорт имеет уникальную систему освещения ВПП, позволяющую принимать самолёты в сложных метеоусловиях, характерных для Сибири.</p>
+    <p>Скоростные съезды L (Lima) и H (Hotel) были модернизированы в 2020 году и позволяют сократить время руления на 30% по сравнению с обычными рулёжными дорожками.</p>
+    
+    <div style="text-align: center; margin-top: 20px;">
+      <a href="https://discord.gg/unnt" class="discord-link" target="_blank">
+        <img src="src/discord2.png" alt="Discord" class="discord-icon">
+        Присоединиться к нашему Discord-сообществу
+      </a>
+    </div>
+  </main>
+
+  <footer>
+    © 2025 Аэропорт Толмачёво (Новосибирск). Все права защищены.<br>
+    <a href="https://discord.gg/unnt" style="color: var(--discord); text-decoration: none;" target="_blank">Официальный Discord-сервер</a>
+  </footer>
+
+</body>
+</html>
