@@ -4,184 +4,14 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title id="page-title">В разработке</title>
-  <link rel="icon" href="src/UNNT_ACC.png" type="image/png">
-  <style>
-    :root {
-      --primary: #0066cc;
-      --background: #f0f8ff;
-      --text: #2a2a2a;
-      --card-bg: #ffffff;
-      --radius: 20px;
-      --discord: #5865F2;
-      --vatsim: #1a4b8c;
-      --frequency: #4b0082;
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    body {
-      font-family: "Segoe UI", sans-serif;
-      background-color: var(--background);
-      color: var(--text);
-      line-height: 1.6;
-      padding: 0;
-    }
-
-    /* Меню навигации */
-    .nav-menu {
-      background: #003366;
-      padding: 10px 0;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-      position: relative;
-    }
-    .nav-container {
-      max-width: 1200px;
-      margin: 0 auto;
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 5px;
-      padding: 0 10px;
-    }
-    .nav-link {
-      color: white;
-      text-decoration: none;
-      padding: 6px 10px;
-      border-radius: var(--radius);
-      transition: background-color 0.3s;
-      font-size: 0.9em;
-    }
-    .home-link {
-      background-color: #004080;
-      font-weight: bold;
-    }
-    .nav-link:hover {
-      background-color: rgba(255,255,255,0.2);
-    }
-    .home-link:hover {
-      background-color: #0055aa;
-    }
-
-    /* Language switcher */
-    .language-switcher {
-      position: absolute;
-      top: 15px;
-      right: 15px;
-      display: flex;
-      gap: 5px;
-      padding: 5px;
-      border-radius: 30px;
-    }
-    .lang-btn {
-      background: none;
-      border: none;
-      cursor: pointer;
-      padding: 0;
-      transition: all 0.3s;
-    }
-    .lang-flag {
-      height: 20px;
-      width: 30px;
-      border-radius: 3px;
-      transition: all 0.3s;
-      box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
-    }
-    .lang-btn.active .lang-flag {
-      transform: scale(1.1);
-      box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
-      opacity: 1;
-      filter: none;
-    }
-    .lang-btn:not(.active) .lang-flag {
-      opacity: 0.6;
-      filter: grayscale(30%);
-    }
-    .lang-btn:hover .lang-flag {
-      transform: scale(1.1);
-      opacity: 1;
-      filter: none;
-    }
-
-    /* Основной контент */
-    .content {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      height: calc(100vh - 100px);
-      text-align: center;
-      padding: 20px;
-    }
-
-    .message-box {
-      background: #ffffff;
-      padding: 40px 30px;
-      border-radius: var(--radius);
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-      color: #222;
-    }
-
-    h1 {
-      color: var(--primary);
-      margin-bottom: 10px;
-      font-size: 2em;
-    }
-
-    p {
-      color: var(--text);
-      font-size: 1.1em;
-    }
-
-    .home-button {
-      display: inline-block;
-      background-color: var(--primary);
-      color: white;
-      text-decoration: none;
-      padding: 10px 20px;
-      border-radius: var(--radius);
-      font-size: 1em;
-      font-weight: bold;
-      margin-top: 20px;
-      transition: background-color 0.3s;
-    }
-
-    .home-button:hover {
-      background-color: #004d99;
-    }
-
-    /* Адаптация для планшетов и десктопов */
-    @media (min-width: 768px) {
-      .nav-link, .home-link {
-        padding: 8px 15px;
-        font-size: 1em;
-      }
-      .message-box {
-        padding: 50px 40px;
-      }
-      h1 {
-        font-size: 2.5em;
-      }
-      .lang-flag {
-        height: 25px;
-        width: 35px;
-      }
-      .language-switcher {
-        position: fixed;
-        bottom: 15px;
-        right: 15px;
-        backdrop-filter: none;
-      }
-    }
-  </style>
+  <link rel="icon" href="../src/UNNT_ACC.png" type="image/png">
+  <link rel="stylesheet" href="../style/unww.css">
 </head>
 <body>
 
   <nav class="nav-menu">
     <div class="nav-container">
-      <a href="index.html" class="nav-link" id="home-link">На главную</a>
+      <a href="../index.html" class="nav-link" id="home-link">На главную</a>
       <a href="unnt.html" class="nav-link">UNNT</a>
       <a href="unoo.html" class="nav-link">UNOO</a>
       <a href="unbg.html" class="nav-link">UNBG</a>
@@ -193,10 +23,10 @@
     </div>
     <div class="language-switcher">
       <button class="lang-btn active" data-lang="ru" onclick="switchLanguage('ru')" style="position: fixed; bottom: 20px; right: 20px;">
-        <img src="src/RU.jpg" alt="Русский" class="lang-flag" title="Русский">
+        <img src="../src/RU.jpg" alt="Русский" class="lang-flag" title="Русский">
       </button>
       <button class="lang-btn" data-lang="en" onclick="switchLanguage('en')" style="position: fixed; bottom: 20px; right: 80px;">
-        <img src="src/UK.jpg" alt="English" class="lang-flag" title="English">
+        <img src="../src/UK.jpg" alt="English" class="lang-flag" title="English">
       </button>
     </div>
   </nav>
@@ -205,7 +35,7 @@
     <div class="message-box">
       <h1 id="main-heading">В разработке</h1>
       <p id="main-text">Эта страница находится в процессе создания. Возвращайтесь позже!</p>
-      <a href="index.html" class="home-button" id="home-button">На главную</a>
+      <a href="../index.html" class="home-button" id="home-button">На главную</a>
     </div>
   </div>
 
