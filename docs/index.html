@@ -18,7 +18,7 @@
     }
     .language-switcher {
       position: fixed;
-      top: 15px;
+      bottom: 15px;
       right: 15px;
       display: flex;
       gap: 5px;
@@ -210,12 +210,10 @@
       font-size: 0.85em;
       color: #666;
     }
-
-    /* Адаптация для планшетов и десктопов */
     @media (min-width: 768px) {
       .language-switcher {
-        position: absolute;
-        top: 15px;
+        position: fixed;
+        bottom: 15px;
         right: 15px;
         backdrop-filter: none;
       }
@@ -262,10 +260,10 @@
   </div>
   <nav class="nav-menu">
     <div class="language-switcher">
-      <button class="lang-btn active" data-lang="ru" onclick="switchLanguage('ru')">
+      <button class="lang-btn active" data-lang="ru" onclick="switchLanguage('ru')" style="position: fixed; bottom: 20px; right: 20px;">
         <img src="src/RU.jpg" alt="Русский" class="lang-flag" title="Русский">
       </button>
-      <button class="lang-btn" data-lang="en" onclick="switchLanguage('en')">
+      <button class="lang-btn" data-lang="en" onclick="switchLanguage('en')" style="position: fixed; bottom: 20px; right: 80px;">>
         <img src="src/UK.jpg" alt="English" class="lang-flag" title="English">
       </button>
     </div>
