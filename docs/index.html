@@ -5,254 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Региональный центр Новосибирск | VATSIM</title>
   <link rel="icon" href="src/UNNT_ACC.png" type="image/png">
-  <style>
-    :root {
-      --primary: #0066cc;
-      --background: #f0f8ff;
-      --text: #2a2a2a;
-      --card-bg: #ffffff;
-      --radius: 20px;
-      --discord: #5865F2;
-      --vatsim: #1a4b8c;
-      --frequency: #4b0082;
-    }
-    .language-switcher {
-      position: fixed;
-      bottom: 15px;
-      right: 15px;
-      display: flex;
-      gap: 5px;
-      padding: 5px;
-      border-radius: 30px;
-      z-index: 100;
-      backdrop-filter: blur(5px);
-    }
-    .lang-btn {
-      background: none;
-      border: none;
-      cursor: pointer;
-      padding: 0;
-      transition: all 0.3s;
-    }
-    .lang-flag {
-      height: 20px;
-      width: 30px;
-      border-radius: 3px;
-      transition: all 0.3s;
-      box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
-    }
-    .lang-btn.active .lang-flag {
-      transform: scale(1.1);
-      box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
-      opacity: 1;
-      filter: none;
-    }
-    .lang-btn:not(.active) .lang-flag {
-      opacity: 0.6;
-      filter: grayscale(30%);
-    }
-    .lang-btn:hover .lang-flag {
-      transform: scale(1.1);
-      opacity: 1;
-      filter: none;
-    }
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-    body {
-      font-family: "Segoe UI", sans-serif;
-      background-color: var(--background);
-      color: var(--text);
-      line-height: 1.6;
-      padding: 0;
-    }
-
-    /* Верхняя подпись аэропорта */
-    .airport-signature {
-      background: #002244;
-      color: white;
-      text-align: center;
-      padding: 8px 0;
-      font-size: 0.9em;
-      font-weight: bold;
-    }
-
-    /* Меню навигации */
-    .nav-menu {
-      background: #003366;
-      padding: 10px 0;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-      position: relative;
-    }
-    .nav-container {
-      max-width: 1200px;
-      margin: 0 auto;
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 5px;
-      padding: 0 10px;
-    }
-    .nav-link {
-      color: white;
-      text-decoration: none;
-      padding: 6px 10px;
-      border-radius: var(--radius);
-      transition: background-color 0.3s;
-      font-size: 0.9em;
-    }
-    .home-link {
-      background-color: #004080;
-      font-weight: bold;
-    }
-    .nav-link:hover {
-      background-color: rgba(255,255,255,0.2);
-    }
-    .home-link:hover {
-      background-color: #0055aa;
-    }
-
-    /* Заголовок */
-    header {
-      background: var(--primary);
-      color: white;
-      padding: 25px 15px;
-      text-align: center;
-      border-radius: 0 0 var(--radius) var(--radius);
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-      margin-bottom: 20px;
-      background-image: linear-gradient(135deg, #0066cc, #004080);
-      position: relative;
-    }
-    .logo-container {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      margin-bottom: 10px;
-    }
-    .logo {
-      height: 70px;
-      width: auto;
-    }
-    h1 {
-      font-size: 1.8em;
-      margin-bottom: 8px;
-    }
-
-    /* Кнопки */
-    .discord-link, .vatsim-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      background-color: var(--discord);
-      color: white;
-      padding: 8px 15px;
-      border-radius: 15px;
-      text-decoration: none;
-      font-weight: bold;
-      margin-top: 12px;
-      transition: background-color 0.3s;
-      font-size: 0.9em;
-    }
-    .discord-icon, .vatsim-icon {
-      height: 20px;
-      width: auto;
-    }
-    .discord-link:hover {
-      background-color: #4752C4;
-    }
-    .vatsim-link {
-      background-color: var(--vatsim);
-    }
-    .vatsim-link:hover {
-      background-color: #0d3a7a;
-    }
-
-    /* Основной контент */
-    main {
-      background-color: var(--card-bg);
-      padding: 20px;
-      max-width: 900px;
-      margin: 0 auto;
-      border-radius: var(--radius);
-      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.05);
-    }
-    h2 {
-      font-size: 1.5em;
-      margin: 20px 0 12px;
-      color: var(--primary);
-    }
-    h3 {
-      font-size: 1.2em;
-      margin: 15px 0 8px;
-      color: var(--primary);
-    }
-    .grid-container {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 15px;
-      margin: 20px 0;
-    }
-    .card {
-      background: #e6f2ff;
-      padding: 15px;
-      border-radius: var(--radius);
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    }
-    footer {
-      text-align: center;
-      margin-top: 30px;
-      padding: 15px;
-      font-size: 0.85em;
-      color: #666;
-    }
-    @media (min-width: 768px) {
-      .language-switcher {
-        position: fixed;
-        bottom: 70px;
-        right: 15px;
-        backdrop-filter: none;
-      }
-      .airport-signature {
-        font-size: 1em;
-        padding: 10px 0;
-      }
-      .nav-menu {
-        padding: 15px 0;
-      }
-      .nav-container {
-        gap: 10px;
-        padding: 0 20px;
-      }
-      .nav-link, .home-link {
-        padding: 8px 15px;
-        font-size: 1em;
-      }
-      header {
-        padding: 40px 20px;
-      }
-      .logo {
-        height: 90px;
-      }
-      h1 {
-        font-size: 2.5em;
-      }
-      .discord-link, .vatsim-link {
-        padding: 10px 20px;
-        font-size: 1em;
-      }
-      .discord-icon, .vatsim-icon {
-        height: 25px;
-      }
-      .lang-flag {
-        height: 25px;
-        width: 35px;
-      }
-    }
-  </style>
+  <link rel="stylesheet" href="style/index.css">
 </head>
 <body>
   <div class="airport-signature">
@@ -268,14 +21,14 @@
     </div>
     <div class="nav-container">
       <a href="index.html" class="nav-link home-link" id="home-link">Главная</a>
-      <a href="unnt.html" class="nav-link">UNNT</a>
-      <a href="unoo.html" class="nav-link">UNOO</a>
-      <a href="unbg.html" class="nav-link">UNBG</a>
-      <a href="unbb.html" class="nav-link">UNBB</a>
-      <a href="untt.html" class="nav-link">UNTT</a>
-      <a href="unee.html" class="nav-link">UNEE</a>
-      <a href="unww.html" class="nav-link">UNWW</a>
-      <a href="unss.html" class="nav-link">UNSS</a>
+      <a href="html/unnt.html" class="nav-link">UNNT</a>
+      <a href="html/unoo.html" class="nav-link">UNOO</a>
+      <a href="html/unbg.html" class="nav-link">UNBG</a>
+      <a href="html/unbb.html" class="nav-link">UNBB</a>
+      <a href="html/untt.html" class="nav-link">UNTT</a>
+      <a href="html/unee.html" class="nav-link">UNEE</a>
+      <a href="html/unww.html" class="nav-link">UNWW</a>
+      <a href="html/unss.html" class="nav-link">UNSS</a>
     </div>
   </nav>
   <header>
@@ -283,91 +36,90 @@
       <img src="src/UNNT_ACC.png" alt="Логотип UNNT ACC" class="logo">
       <img src="src/VATRUS.png" alt="Логотип VATSIM" class="logo">
     </div>
-    <h1 id="main-title">Региональный центр Новосибирск</h1>
-    <p id="main-subtitle">Официальный центр управления воздушным движением в сети VATSIM</p>
+    <h1 id="main-title"></h1>
+    <p id="main-subtitle"></p>
     <div style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;">
       <a href="https://vatsim.net" class="vatsim-link" target="_blank">
         <img src="src/vatsim.png" alt="VATSIM" class="vatsim-icon">
-        <span id="vatsim-link-text">Официальный сайт VATSIM</span>
+        <span id="vatsim-link-text"></span>
       </a>
       <a href="https://discord.gg/unnt" class="discord-link" target="_blank">
         <img src="src/discord2.png" alt="Discord" class="discord-icon">
-        <span id="discord-link-text">Наш Discord-сервер</span>
+        <span id="discord-link-text"></span>
       </a>
     </div>
   </header>
   <main>
     <section>
-      <h2 id="about-title">О нашем центре</h2>
-      <p id="about-text">Региональный центр Новосибирск (Novosibirsk FIR) обеспечивает управление воздушным движением в Сибирском регионе в сети VATSIM. Наш центр объединяет несколько крупных аэропортов и контролирует обширное воздушное пространство.</p>
+      <h2 id="about-title"></h2>
+      <p id="about-text"></p>
       <div class="grid-container">
         <div class="card">
-          <h3 id="students-title"> >40 студентов проходят обучение в данный момент</h3>
-          <p id="students-text">Мы ради каждому и ждём любого в нашей дружной команде</p>
+          <h3 id="students-title"></h3>
+          <p id="students-text"></p>
         </div>
         <div class="card">
-          <h3 id="territory-title">Территория</h3>
-          <p id="territory-text">Мы контролируем воздушное пространство площадью более 3 млн км², включая 8 крупных аэропортов и множество региональных.</p>
+          <h3 id="territory-title"></h3>
+          <p id="territory-text"></p>
         </div>
         <div class="card">
-          <h3 id="stats-title">Статистика</h3>
-          <p id="stats-text">Около 150 рейсов выполняется в аэропорты нашего РегЦ ежедневно</p>
+          <h3 id="stats-title"></h3>
+          <p id="stats-text"></p>
         </div>
       </div>
     </section>
     <section>
-      <h2 id="airports-title">Подконтрольные аэропорты</h2>
+      <h2 id="airports-title"></h2>
       <div class="grid-container">
         <div class="card">
           <h3><strong>UNNT</strong></h3>
-          <p id="unnt-text">Новосибирск (Толмачёво)<br>Крупнейший международный аэропорт за Уралом</p>
+          <p id="unnt-text"></p>
         </div>
         <div class="card">
           <h3><strong>UNOO</strong></h3>
-          <p id="unoo-text">Омск (Центральный)<br>Аэропорт федерального значения</p>
+          <p id="unoo-text"></p>
         </div>
         <div class="card">
           <h3><strong>UNBG</strong></h3>
-          <p id="unbg-text">Горно-Алтайск<br>Региональный аэропорт. Один из самых красивых в нашей стране</p>
+          <p id="unbg-text"></p>
         </div>
         <div class="card">
           <h3><strong>UNBB</strong></h3>
-          <p id="unbb-text">Барнаул (Михайловка)<br>Международный аэропорт</p>
+          <p id="unbb-text"></p>
         </div>
         <div class="card">
           <h3><strong>UNTT</strong></h3>
-          <p id="untt-text">Томск (Богашёво)<br>Федеральный аэропорт</p>
+          <p id="untt-text"></p>
         </div>
         <div class="card">
           <h3><strong>UNEE</strong></h3>
-          <p id="unee-text">Кемерово<br>Региональный аэропорт</p>
+          <p id="unee-text"></p>
         </div>
         <div class="card">
           <h3><strong>UNWW</strong></h3>
-          <p id="unww-text">Новокузнецк (Спиченково)<br>Региональный аэропорт</p>
+          <p id="unww-text"></p>
         </div>
         <div class="card">
           <h3><strong>UNSS</strong></h3>
-          <p id="unss-text">Стрежевой<br>Местный аэропорт</p>
+          <p id="unss-text"></p>
         </div>
       </div>
     </section>
     <section>
-      <h2 id="info-title">Полезная информация</h2>
+      <h2 id="info-title"></h2>
       <div class="grid-container">
         <div class="card">
-          <h3 id="contacts-title">Контакты</h3>
-          <p id="contacts-text">Для связи с нами, пожалуйста, используйте адрес электронной почты: <a href="mailto:info@vatsim-ru.org">info@vatsim-ru.org</a></p>
+          <h3 id="contacts-title"></h3>
+          <p id="contacts-text"><a href="mailto:unnt-fir@outlook.com"></a></p>
         </div>
         <div class="card">
-          <h3 id="support-title">Службы поддержки</h3>
-          <p id="support-text">Наши диспетчеры всегда готовы помочь. Для получения помощи, присоединяйтесь к нашему Discord-серверу и обратитесь к членам команды.</p>
+          <h3 id="support-title"></h3>
+          <p id="support-text"></p>
         </div>
       </div>
     </section>
   </main>
   <footer id="footer-text">
-    © 2025 Аэропорт Толмачёво (Новосибирск). Все права защищены. Не связан с реальными авиационными службами.
   </footer>
 
   <script>
@@ -380,7 +132,7 @@
         "discord-link-text": "Our Discord server",
         "about-title": "About Our Center",
         "about-text": "Novosibirsk FIR provides air traffic control services in the Siberian region on the VATSIM network. Our center combines several major airports and controls vast airspace.",
-        "students-title": ">40 students currently in training",
+        "students-title": "More 40 students currently in training",
         "students-text": "We welcome everyone and look forward to having you in our friendly team",
         "territory-title": "Territory",
         "territory-text": "We control airspace of over 3 million km², including 8 major airports and many regional ones.",
@@ -397,7 +149,7 @@
         "unss-text": "Strejevoi<br>Local airport",
         "info-title": "Useful Information",
         "contacts-title": "Contacts",
-        "contacts-text": "To contact us, please use the email address: <a href=\"mailto:info@vatsim-ru.org\">info@vatsim-ru.org</a>",
+        "contacts-text": "To contact us, please use the email address: <a href=\"mailto:unnt-fir@outlook.com\">unnt-fir@outlook.com</a>",
         "support-title": "Support Services",
         "support-text": "Our controllers are always ready to help. For assistance, join our Discord server and contact team members.",
         "footer-text": "© 2025 Tolmachevo Airport (Novosibirsk). All rights reserved. Not affiliated with real aviation services.",        
@@ -410,7 +162,7 @@
         "discord-link-text": "Наш Discord-сервер",
         "about-title": "О нашем центре",
         "about-text": "Региональный центр Новосибирск (Novosibirsk FIR) обеспечивает управление воздушным движением в Сибирском регионе в сети VATSIM. Наш центр объединяет несколько крупных аэропортов и контролирует обширное воздушное пространство.",
-        "students-title": ">40 студентов проходят обучение в данный момент",
+        "students-title": "Более 40 студентов проходят обучение в данный момент",
         "students-text": "Мы ради каждому и ждём любого в нашей дружной команде",
         "territory-title": "Территория",
         "territory-text": "Мы контролируем воздушное пространство площадью более 3 млн км², включая 8 крупных аэропортов и множество региональных.",
@@ -427,7 +179,7 @@
         "unss-text": "Стрежевой<br>Местный аэропорт",
         "info-title": "Полезная информация",
         "contacts-title": "Контакты",
-        "contacts-text": "Для связи с нами, пожалуйста, используйте адрес электронной почты: <a href=\"mailto:info@vatsim-ru.org\">info@vatsim-ru.org</a>",
+        "contacts-text": "Для связи с нами, пожалуйста, используйте адрес электронной почты: <a href=\"mailto:unnt-fir@outlook.com\">unnt-fir@outlook.com</a>",
         "support-title": "Службы поддержки",
         "support-text": "Наши диспетчеры всегда готовы помочь. Для получения помощи, присоединяйтесь к нашему Discord-серверу и обратитесь к членам команды.",
         "footer-text": "© 2025 Аэропорт Толмачёво (Новосибирск). Все права защищены. Не связан с реальными авиационными службами.",
