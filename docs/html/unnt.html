@@ -66,60 +66,9 @@
         <p id="simulator-note" style="margin-top: 12px;">Эти сценарии содержат точную модель аэропорта с учётом всех особенностей инфраструктуры и навигации.</p>
       </div>
 
-      <div class="info-box">
-        <h2 id="params-title">Основные параметры</h2>
-        <ul>
-          <li><strong>Код ИКАО:</strong> UNNT</li>
-          <li><strong>Код ИАТА:</strong> OVB</li>
-          <li><strong>Высота над уровнем моря:</strong> 368 футов (111 метров)</li>
-          <li><strong>ВПП:</strong> 2 полосы (07/25 длиной 3600м и 16/34 длиной 3600м)</li>
-          <li><strong>Пассажиропоток:</strong> более 6 млн человек в год</li>
-          <li><strong>Класс:</strong> международный аэропорт федерального значения</li>
-        </ul>
-      </div>
-
-      <div class="image-grid">
-        <div>
-          <img src="../src/UNNT_terminal.jpg" alt="Терминал аэропорта Толмачёво">
-          <div class="caption" id="terminal-caption">Пассажирский терминал аэропорта</div>
-        </div>
-        <div>
-          <img src="../src/UNNT_visota.jpg" alt="Аэропорт с высоты">
-          <div class="caption" id="aerial-caption">Вид на аэропорт с воздуха</div>
-        </div>
-      </div>
-
-      <h2 id="frequencies-title">Радиочастоты аэропорта</h2>
-      <ul class="frequency-list">
-        <li><strong>UNNT_N_CTR:</strong> <span class="frequency">126.900</span></li>
-        <li><strong>UNNT_E_CTR:</strong> <span class="frequency">126.100</span></li>
-        <li><strong>UNNT_W_CTR:</strong> <span class="frequency">135.500</span></li>
-        <li><strong>UNNT_C_CTR:</strong> <span class="frequency">132.300</span></li>
-        <li><strong>UNNT_APP:</strong> <span class="frequency">127.500</span></li>
-        <li><strong>UNNT_R_APP:</strong> <span class="frequency">122.000</span></li>
-        <li><strong>UNNT_1_TWR (Только ВПП 07/25):</strong> <span class="frequency">118.500</span></li>
-        <li><strong>UNNT_2_TWR (Только ВПП 16/34):</strong> <span class="frequency">126.700</span></li>
-        <li><strong>UNNT_GND:</strong> <span class="frequency">121.700</span></li>
-        <li><strong>UNNT_DEL:</strong> <span class="frequency">135.400</span></li>
-        <li><strong>UNNT_ATIS:</strong> <span class="frequency">131.300</span></li>
-      </ul>
-      
-      <div class="info-box">
-        <h2 id="transition-title">Высота и эшелон перехода</h2>
-        <ul>
-          <li><strong>Высота перехода (Transition Altitude):</strong> 6000 футов (1720 метров)</li>
-          <li><strong>Эшелон перехода (Transition Level) зависит от QNH:</strong>
-            <ul>
-              <li><strong>FL70</strong> - если QNH ≥ 1013 гПа</li>
-              <li><strong>FL80</strong> - если 977 гПа < QNH < 1013 гПа</li>
-              <li><strong>FL90</strong> - если QNH ≤ 977 гПа</li>
-            </ul>
-          </li>
-        </ul>
-      </div>
-
+      <!-- Важное ограничение - перенесенный блок -->
       <div class="warning">
-        <h2 id="restriction-title">Важное ограничение</h2>
+        <h3 id="restriction-title">Ограничение при рулении</h3>
         <p id="restriction-text1">На части перрона между рулёжными дорожками Bravo и Charlie <strong>запрещено руление воздушным судам с размахом крыла 48 метров и более</strong> из-за ограниченного пространства.</p>
         <p id="restriction-text2">Это ограничение особенно актуально для таких самолётов как Boeing 747, Airbus A340 и аналогичных широкофюзеляжных судов.</p>
         
@@ -127,55 +76,225 @@
         <div class="caption" id="restriction-caption">Карта зон с ограничениями для крупных ВС</div>
       </div>
 
-      <h2 id="infrastructure-title">Особенности инфраструктуры</h2>
-      <ul>
-        <li><strong>Взлётно-посадочные полосы:</strong> 
-          <ul>
-            <li>ВПП 07/25: 3600м × 60м, PCN 70/R/B/W/T</li>
-            <li>ВПП 16/34: 3600м × 60м, PCN 80/R/B/W/T</li>
-          </ul>
-          <p id="runways-note">Обе ВПП способны принимать воздушные суда типа Airbus A380 и Ан-225 "Мрия"</p>
-        </li>
-        <li><strong>Перрон:</strong> 
-          <ul>
-            <li>Всего 87 стояночных мест</li>
-            <li>7 специализированных стоянок для воздушных судов типа A380</li>
-            <li>16 стоянок для широкофюзеляжных судов (Boeing 747, 777, Airbus A330, A340 и др.)</li>
-          </ul>
-        </li>
-        <li><strong>Рулёжные дорожки:</strong> 
-          <ul>
-            <li>Alpha, Bravo, Charlie, Delta</li>
-            <li><strong>Скоростные съезды:</strong> L (Lima) и H (Hotel)</li>
-          </ul>
-        </li>
-        <li><strong>Навигация:</strong> оборудован по категории II ICAO</li>
-        <li><strong>Грузовой терминал:</strong> пропускная способность 120 тыс. тонн в год</li>
-      </ul>
+      <!-- Общая информация -->
+      <div class="section">
+        <button class="section-header" onclick="toggleSection(this)">
+          <h2>Общая информация</h2>
+          <span class="arrow">▼</span>
+        </button>
+        <div class="section-content">
+          <div class="info-box">
+            <h3 id="params-title">Основные параметры</h3>
+            <ul>
+              <li><strong>Код ИКАО:</strong> UNNT</li>
+              <li><strong>Код ИАТА:</strong> OVB</li>
+              <li><strong>Высота над уровнем моря:</strong> 368 футов (111 метров)</li>
+              <li><strong>ВПП:</strong> 2 полосы (07/25 длиной 3600м и 16/34 длиной 3600м)</li>
+              <li><strong>Пассажиропоток:</strong> более 6 млн человек в год</li>
+              <li><strong>Класс:</strong> международный аэропорт федерального значения</li>
+            </ul>
+          </div>
 
-      <img src="../src/stands_UNNT.png" alt="Карта стоянок с указанием, какие ВС могут занимать какие стоянки" class="map-image">
-      <div class="caption" id="stands-caption">Карта стоянок с классификацией по типам ВС</div>
+          <div class="image-grid">
+            <div>
+              <img src="../src/UNNT_terminal.jpg" alt="Терминал аэропорта Толмачёво">
+              <div class="caption" id="terminal-caption">Пассажирский терминал аэропорта</div>
+            </div>
+            <div>
+              <img src="../src/UNNT_visota.jpg" alt="Аэропорт с высоты">
+              <div class="caption" id="aerial-caption">Вид на аэропорт с воздуха</div>
+            </div>
+          </div>
 
-      <img src="../src/A380_stands.png" alt="Карта разрешённых маршрутов руления для A380" class="map-image">
-      <div class="caption" id="a380stands-caption">Стоянки для Airbus A380</div>
+          <h3 id="frequencies-title">Радиочастоты аэропорта</h3>
+          <ul class="frequency-list">
+            <li><strong>UNNT_N_CTR:</strong> <span class="frequency">126.900</span></li>
+            <li><strong>UNNT_E_CTR:</strong> <span class="frequency">126.100</span></li>
+            <li><strong>UNNT_W_CTR:</strong> <span class="frequency">135.500</span></li>
+            <li><strong>UNNT_C_CTR:</strong> <span class="frequency">132.300</span></li>
+            <li><strong>UNNT_APP:</strong> <span class="frequency">127.500</span></li>
+            <li><strong>UNNT_R_APP:</strong> <span class="frequency">122.000</span></li>
+            <li><strong>UNNT_1_TWR (Только ВПП 07/25):</strong> <span class="frequency">118.500</span></li>
+            <li><strong>UNNT_2_TWR (Только ВПП 16/34):</strong> <span class="frequency">126.700</span></li>
+            <li><strong>UNNT_GND:</strong> <span class="frequency">121.700</span></li>
+            <li><strong>UNNT_DEL:</strong> <span class="frequency">135.400</span></li>
+            <li><strong>UNNT_ATIS:</strong> <span class="frequency">131.300</span></li>
+          </ul>
+          
+          <div class="info-box">
+            <h3 id="transition-title">Высота и эшелон перехода</h3>
+            <ul>
+              <li><strong>Высота перехода (Transition Altitude):</strong> 6000 футов (1720 метров)</li>
+              <li><strong>Эшелон перехода (Transition Level) зависит от QNH:</strong>
+                <ul>
+                  <li><strong>FL70</strong> - если QNH ≥ 1013 гПа</li>
+                  <li><strong>FL80</strong> - если 977 гПа < QNH < 1013 гПа</li>
+                  <li><strong>FL90</strong> - если QNH ≤ 977 гПа</li>
+                </ul>
+              </li>
+            </ul>
+          </div>
 
-      <div class="image-grid">
-        <div>
-          <img src="../src/VPP_1634.jpg" alt="ВПП аэропорта">
-          <div class="caption" id="runway-caption">Взлётно-посадочная полоса 16/34</div>
-        </div>
-        <div>
-          <img src="../src/A380_UNNT.jpg" alt="A380 в Толмачёво">
-          <div class="caption" id="a380-caption">Airbus A380 в аэропорту Толмачёво</div>
+          <h3 id="infrastructure-title">Особенности инфраструктуры</h3>
+          <ul>
+            <li><strong>Взлётно-посадочные полосы:</strong> 
+              <ul>
+                <li>ВПП 07/25: 3600м × 60м, PCN 70/R/B/W/T</li>
+                <li>ВПП 16/34: 3600м × 60м, PCN 80/R/B/W/T</li>
+              </ul>
+              <p id="runways-note">Обе ВПП способны принимать воздушные суда типа Airbus A380 и Ан-225 "Мрия"</p>
+            </li>
+            <li><strong>Перрон:</strong> 
+              <ul>
+                <li>Всего 87 стояночных мест</li>
+                <li>7 специализированных стоянок для воздушных судов типа A380</li>
+                <li>16 стоянок для широкофюзеляжных судов (Boeing 747, 777, Airbus A330, A340 и др.)</li>
+              </ul>
+            </li>
+            <li><strong>Рулёжные дорожки:</strong> 
+              <ul>
+                <li>Alpha, Bravo, Charlie, Delta</li>
+                <li><strong>Скоростные съезды:</strong> L (Lima) и H (Hotel)</li>
+              </ul>
+            </li>
+            <li><strong>Навигация:</strong> оборудован по категории II ICAO</li>
+            <li><strong>Грузовой терминал:</strong> пропускная способность 120 тыс. тонн в год</li>
+          </ul>
+
+          <img src="../src/stands_UNNT.png" alt="Карта стоянок с указанием, какие ВС могут занимать какие стоянки" class="map-image">
+          <div class="caption" id="stands-caption">Карта стоянок с классификацией по типам ВС</div>
+
+          <img src="../src/A380_stands.png" alt="Карта разрешённых маршрутов руления для A380" class="map-image">
+          <div class="caption" id="a380stands-caption">Стоянки для Airbus A380</div>
+
+          <div class="image-grid">
+            <div>
+              <img src="../src/VPP_1634.jpg" alt="ВПП аэропорта">
+              <div class="caption" id="runway-caption">Взлётно-посадочная полоса 16/34</div>
+            </div>
+            <div>
+              <img src="../src/A380_UNNT.jpg" alt="A380 в Толмачёво">
+              <div class="caption" id="a380-caption">Airbus A380 в аэропорту Толмачёво</div>
+            </div>
+          </div>
+
+          <h3 id="facts-title">Интересные факты</h3>
+          <p id="fact1">Аэропорт Толмачёво был основан в 1957 году и изначально использовался как военный аэодром. Только в 1963 году он получил статус гражданского аэропорта.</p>
+          <p id="fact2">В 2017 году аэропорт установил рекорд, обслужив за сутки 25 тысяч пассажиров, что стало абсолютным максимумом для сибирского региона.</p>
+          <p id="fact3">Аэропорт имеет уникальную систему освещения ВПП, позволяющую принимать самолёты в сложных метеоусловиях, характерных для Сибири.</p>
+          <p id="fact4">Скоростные съезды L (Lima) и H (Hotel) были модернизированы в 2020 году и позволяют сократить время руления на 30% по сравнению с обычными рулёжными дорожками.</p>
         </div>
       </div>
 
-      <h2 id="facts-title">Интересные факты</h2>
-      <p id="fact1">Аэропорт Толмачёво был основан в 1957 году и изначально использовался как военный аэодром. Только в 1963 году он получил статус гражданского аэропорта.</p>
-      <p id="fact2">В 2017 году аэропорт установил рекорд, обслужив за сутки 25 тысяч пассажиров, что стало абсолютным максимумом для сибирского региона.</p>
-      <p id="fact3">Аэропорт имеет уникальную систему освещения ВПП, позволяющую принимать самолёты в сложных метеоусловиях, характерных для Сибири.</p>
-      <p id="fact4">Скоростные съезды L (Lima) и H (Hotel) были модернизированы в 2020 году и позволяют сократить время руления на 30% по сравнению с обычными рулёжными дорожками.</p>
-      
+      <!-- Для вылетающих -->
+      <div class="section">
+        <button class="section-header" onclick="toggleSection(this)">
+          <h2>Для вылетающих</h2>
+          <span class="arrow">▼</span>
+        </button>
+        <div class="section-content">
+          <div class="info-box">
+            <h3>Процедура вылета</h3>
+            <ol>
+              <li>Получите разрешение на запуск двигателей (DEL 135.400)</li>
+              <li>После запуска двигателей свяжитесь с диспетчером руления (GND 121.700)</li>
+              <li>Следуйте указаниям диспетчера руления до ВПП</li>
+              <li>На исполнительном старте свяжитесь с диспетчером управления (TWR 118.500 или 126.700)</li>
+              <li>Получите разрешение на взлёт</li>
+            </ol>
+          </div>
+
+          <div class="warning">
+            <h3>Важно для вылетающих</h3>
+            <p>При вылете с ВПП 16/34 обратите внимание на зону ограничения высоты в районе аэродрома Северный (UNCC).</p>
+            <p>Минимальная высота пролёта над UNCC - 2000 футов.</p>
+          </div>
+
+          <h3>Рекомендуемые маршруты вылета</h3>
+          <ul>
+            <li><strong>Западное направление:</strong> DCT KOVEL R474 KOGET</li>
+            <li><strong>Восточное направление:</strong> DCT NERUL R343 NILKA</li>
+            <li><strong>Южное направление:</strong> DCT TULUN B453 KADIR</li>
+            <li><strong>Северное направление:</strong> DCT KOVEL R474 TOMSK</li>
+          </ul>
+
+          <img src="../src/departure_routes.png" alt="Карта маршрутов вылета" class="map-image">
+          <div class="caption">Основные маршруты вылета из UNNT</div>
+        </div>
+      </div>
+
+      <!-- Для прилетающих -->
+      <div class="section">
+        <button class="section-header" onclick="toggleSection(this)">
+          <h2>Для прилетающих</h2>
+          <span class="arrow">▼</span>
+        </button>
+        <div class="section-content">
+          <div class="info-box">
+            <h3>Процедура захода на посадку</h3>
+            <ol>
+              <li>Слушайте ATIS (131.300) для получения актуальной информации</li>
+              <li>Свяжитесь с подходом (APP 127.500) на удалении 50-60 NM</li>
+              <li>Следуйте указаниям диспетчера подхода</li>
+              <li>На удалении 10-15 NM вас передадут диспетчеру управления (TWR)</li>
+              <li>После посадки следуйте указаниям диспетчера руления (GND 121.700)</li>
+            </ol>
+          </div>
+
+          <h3>Схемы захода на посадку</h3>
+          <ul>
+            <li><strong>ILS/DME RWY 25:</strong> KOVEL1A, KOVEL1B</li>
+            <li><strong>VOR/DME RWY 07:</strong> NERUL1A, NERUL1B</li>
+            <li><strong>NDB/DME RWY 16:</strong> TOLMA1A</li>
+            <li><strong>Visual RWY 34:</strong> VIZUAL34</li>
+          </ul>
+
+          <div class="warning">
+            <h3>Особенности захода</h3>
+            <p>При заходе на ВПП 07 учитывайте наличие высотных зданий в 5 км от торца ВПП.</p>
+            <p>Минимальная безопасная высота в этом секторе - 1500 футов до 4 DME.</p>
+          </div>
+
+          <img src="../src/arrival_routes.png" alt="Карта маршрутов захода" class="map-image">
+          <div class="caption">Основные схемы захода на посадку в UNNT</div>
+        </div>
+      </div>
+
+      <!-- Для полётов ПВП -->
+      <div class="section">
+        <button class="section-header" onclick="toggleSection(this)">
+          <h2>Для полётов ПВП</h2>
+          <span class="arrow">▼</span>
+        </button>
+        <div class="section-content">
+          <div class="info-box">
+            <h3>Правила полётов ПВП в зоне UNNT</h3>
+            <ul>
+              <li>Все полёты ПВП должны быть согласованы с диспетчерской службой</li>
+              <li>Минимальная высота в зоне аэродрома - 1500 футов AGL</li>
+              <li>Запрещены полёты над жилыми массивами на высоте менее 2000 футов</li>
+              <li>Обязательно прослушивание частоты UNNT_ATIS (131.300)</li>
+            </ul>
+          </div>
+
+          <h3>Рекомендуемые маршруты ПВП</h3>
+          <ul>
+            <li><strong>Северный маршрут:</strong> По руслу реки Обь, не заходя в зону UNCC</li>
+            <li><strong>Восточный маршрут:</strong> Вдоль ЛЭП до Бердска, затем вдоль Бердского залива</li>
+            <li><strong>Южный маршрут:</strong> Вдоль автотрассы М-52 до аэродрома Мочище (UNNM)</li>
+          </ul>
+
+          <div class="warning">
+            <h3>Ограничения ПВП</h3>
+            <p>В период с 22:00 до 06:00 местного времени полёты ПВП в зоне UNNT запрещены.</p>
+            <p>Максимальная скорость ПВП в радиусе 5 NM от аэродрома - 250 узлов.</p>
+          </div>
+
+          <img src="../src/vfr_routes.png" alt="Карта маршрутов ПВП" class="map-image">
+          <div class="caption">Рекомендуемые маршруты ПВП в районе UNNT</div>
+        </div>
+      </div>
+
       <div style="text-align: center; margin-top: 20px;">
         <a href="https://discord.gg/unnt" class="discord-link" target="_blank">
           <img src="../src/discord2.png" alt="Discord" class="discord-icon">
@@ -223,60 +342,9 @@
         <p id="simulator-note" style="margin-top: 12px;">These scenarios contain an accurate airport model with all infrastructure and navigation features.</p>
       </div>
 
-      <div class="info-box">
-        <h2 id="params-title">Key Parameters</h2>
-        <ul>
-          <li><strong>ICAO Code:</strong> UNNT</li>
-          <li><strong>IATA Code:</strong> OVB</li>
-          <li><strong>Elevation:</strong> 368 ft (111 m)</li>
-          <li><strong>Runways:</strong> 2 runways (07/25 3600m long and 16/34 3600m long)</li>
-          <li><strong>Passenger Traffic:</strong> over 6 million passengers per year</li>
-          <li><strong>Class:</strong> international airport of federal significance</li>
-        </ul>
-      </div>
-
-      <div class="image-grid">
-        <div>
-          <img src="../src/UNNT_terminal.jpg" alt="Tolmachevo Airport Terminal">
-          <div class="caption" id="terminal-caption">Passenger terminal of the airport</div>
-        </div>
-        <div>
-          <img src="../src/UNNT_visota.jpg" alt="Airport aerial view">
-          <div class="caption" id="aerial-caption">Aerial view of the airport</div>
-        </div>
-      </div>
-
-      <h2 id="frequencies-title">Airport Frequencies</h2>
-      <ul class="frequency-list">
-        <li><strong>UNNT_N_CTR:</strong> <span class="frequency">126.900</span></li>
-        <li><strong>UNNT_E_CTR:</strong> <span class="frequency">126.100</span></li>
-        <li><strong>UNNT_W_CTR:</strong> <span class="frequency">135.500</span></li>
-        <li><strong>UNNT_C_CTR:</strong> <span class="frequency">132.300</span></li>
-        <li><strong>UNNT_APP:</strong> <span class="frequency">127.500</span></li>
-        <li><strong>UNNT_R_APP:</strong> <span class="frequency">122.000</span></li>
-        <li><strong>UNNT_1_TWR (RWY 07/25 only):</strong> <span class="frequency">118.500</span></li>
-        <li><strong>UNNT_2_TWR (RWY 16/34 only):</strong> <span class="frequency">126.700</span></li>
-        <li><strong>UNNT_GND:</strong> <span class="frequency">121.700</span></li>
-        <li><strong>UNNT_DEL:</strong> <span class="frequency">135.400</span></li>
-        <li><strong>UNNT_ATIS:</strong> <span class="frequency">131.300</span></li>
-      </ul>
-      
-      <div class="info-box">
-        <h2 id="transition-title">Transition Altitude and Level</h2>
-        <ul>
-          <li><strong>Transition Altitude:</strong> 6000 ft (1720 m)</li>
-          <li><strong>Transition Level depends on QNH:</strong>
-            <ul>
-              <li><strong>FL70</strong> - if QNH ≥ 1013 hPa</li>
-              <li><strong>FL80</strong> - if 977 hPa < QNH < 1013 hPa</li>
-              <li><strong>FL90</strong> - if QNH ≤ 977 hPa</li>
-            </ul>
-          </li>
-        </ul>
-      </div>
-
+      <!-- Important Restriction - moved block -->
       <div class="warning">
-        <h2 id="restriction-title">Important Restriction</h2>
+        <h3 id="restriction-title">Taxi restriction</h3>
         <p id="restriction-text1">On part of the apron between taxiways Bravo and Charlie, <strong>taxiing is prohibited for aircraft with a wingspan of 48 meters or more</strong> due to limited space.</p>
         <p id="restriction-text2">This restriction is especially relevant for aircraft such as Boeing 747, Airbus A340 and similar wide-body aircraft.</p>
         
@@ -284,55 +352,225 @@
         <div class="caption" id="restriction-caption">Map of restricted areas for large aircraft</div>
       </div>
 
-      <h2 id="infrastructure-title">Infrastructure Features</h2>
-      <ul>
-        <li><strong>Runways:</strong> 
-          <ul>
-            <li>RWY 07/25: 3600m × 60m, PCN 70/R/B/W/T</li>
-            <li>RWY 16/34: 3600m × 60m, PCN 80/R/B/W/T</li>
-          </ul>
-          <p id="runways-note">Both runways are capable of handling Airbus A380 and An-225 "Mriya" aircraft</p>
-        </li>
-        <li><strong>Apron:</strong> 
-          <ul>
-            <li>Total of 87 parking stands</li>
-            <li>7 specialized stands for Airbus A380 aircraft</li>
-            <li>16 stands for wide-body aircraft (Boeing 747, 777, Airbus A330, A340, etc.)</li>
-          </ul>
-        </li>
-        <li><strong>Taxiways:</strong> 
-          <ul>
-            <li>Alpha, Bravo, Charlie, Delta</li>
-            <li><strong>High-speed exits:</strong> L (Lima) and H (Hotel)</li>
-          </ul>
-        </li>
-        <li><strong>Navigation:</strong> equipped to ICAO Category II standards</li>
-        <li><strong>Cargo Terminal:</strong> annual capacity of 120 thousand tons</li>
-      </ul>
+      <!-- General Information -->
+      <div class="section">
+        <button class="section-header" onclick="toggleSection(this)">
+          <h2>General Information</h2>
+          <span class="arrow">▼</span>
+        </button>
+        <div class="section-content">
+          <div class="info-box">
+            <h3 id="params-title">Key Parameters</h3>
+            <ul>
+              <li><strong>ICAO Code:</strong> UNNT</li>
+              <li><strong>IATA Code:</strong> OVB</li>
+              <li><strong>Elevation:</strong> 368 ft (111 m)</li>
+              <li><strong>Runways:</strong> 2 runways (07/25 3600m long and 16/34 3600m long)</li>
+              <li><strong>Passenger Traffic:</strong> over 6 million passengers per year</li>
+              <li><strong>Class:</strong> international airport of federal significance</li>
+            </ul>
+          </div>
 
-      <img src="../src/stands_UNNT.png" alt="Parking stands map showing which aircraft can occupy which stands" class="map-image">
-      <div class="caption" id="stands-caption">Parking stands map classified by aircraft types</div>
+          <div class="image-grid">
+            <div>
+              <img src="../src/UNNT_terminal.jpg" alt="Tolmachevo Airport Terminal">
+              <div class="caption" id="terminal-caption">Passenger terminal of the airport</div>
+            </div>
+            <div>
+              <img src="../src/UNNT_visota.jpg" alt="Airport aerial view">
+              <div class="caption" id="aerial-caption">Aerial view of the airport</div>
+            </div>
+          </div>
 
-      <img src="../src/A380_stands.png" alt="Map of approved taxi routes for A380" class="map-image">
-      <div class="caption" id="a380stands-caption">Parking stands for Airbus A380</div>
+          <h3 id="frequencies-title">Airport Frequencies</h3>
+          <ul class="frequency-list">
+            <li><strong>UNNT_N_CTR:</strong> <span class="frequency">126.900</span></li>
+            <li><strong>UNNT_E_CTR:</strong> <span class="frequency">126.100</span></li>
+            <li><strong>UNNT_W_CTR:</strong> <span class="frequency">135.500</span></li>
+            <li><strong>UNNT_C_CTR:</strong> <span class="frequency">132.300</span></li>
+            <li><strong>UNNT_APP:</strong> <span class="frequency">127.500</span></li>
+            <li><strong>UNNT_R_APP:</strong> <span class="frequency">122.000</span></li>
+            <li><strong>UNNT_1_TWR (RWY 07/25 only):</strong> <span class="frequency">118.500</span></li>
+            <li><strong>UNNT_2_TWR (RWY 16/34 only):</strong> <span class="frequency">126.700</span></li>
+            <li><strong>UNNT_GND:</strong> <span class="frequency">121.700</span></li>
+            <li><strong>UNNT_DEL:</strong> <span class="frequency">135.400</span></li>
+            <li><strong>UNNT_ATIS:</strong> <span class="frequency">131.300</span></li>
+          </ul>
+          
+          <div class="info-box">
+            <h3 id="transition-title">Transition Altitude and Level</h3>
+            <ul>
+              <li><strong>Transition Altitude:</strong> 6000 ft (1720 m)</li>
+              <li><strong>Transition Level depends on QNH:</strong>
+                <ul>
+                  <li><strong>FL70</strong> - if QNH ≥ 1013 hPa</li>
+                  <li><strong>FL80</strong> - if 977 hPa < QNH < 1013 hPa</li>
+                  <li><strong>FL90</strong> - if QNH ≤ 977 hPa</li>
+                </ul>
+              </li>
+            </ul>
+          </div>
 
-      <div class="image-grid">
-        <div>
-          <img src="../src/VPP_1634.jpg" alt="Airport runway">
-          <div class="caption" id="runway-caption">Runway 16/34</div>
-        </div>
-        <div>
-          <img src="../src/A380_UNNT.jpg" alt="A380 at Tolmachevo">
-          <div class="caption" id="a380-caption">Airbus A380 at Tolmachevo Airport</div>
+          <h3 id="infrastructure-title">Infrastructure Features</h3>
+          <ul>
+            <li><strong>Runways:</strong> 
+              <ul>
+                <li>RWY 07/25: 3600m × 60m, PCN 70/R/B/W/T</li>
+                <li>RWY 16/34: 3600m × 60m, PCN 80/R/B/W/T</li>
+              </ul>
+              <p id="runways-note">Both runways are capable of handling Airbus A380 and An-225 "Mriya" aircraft</p>
+            </li>
+            <li><strong>Apron:</strong> 
+              <ul>
+                <li>Total of 87 parking stands</li>
+                <li>7 specialized stands for Airbus A380 aircraft</li>
+                <li>16 stands for wide-body aircraft (Boeing 747, 777, Airbus A330, A340, etc.)</li>
+              </ul>
+            </li>
+            <li><strong>Taxiways:</strong> 
+              <ul>
+                <li>Alpha, Bravo, Charlie, Delta</li>
+                <li><strong>High-speed exits:</strong> L (Lima) and H (Hotel)</li>
+              </ul>
+            </li>
+            <li><strong>Navigation:</strong> equipped to ICAO Category II standards</li>
+            <li><strong>Cargo Terminal:</strong> annual capacity of 120 thousand tons</li>
+          </ul>
+
+          <img src="../src/stands_UNNT.png" alt="Parking stands map showing which aircraft can occupy which stands" class="map-image">
+          <div class="caption" id="stands-caption">Parking stands map classified by aircraft types</div>
+
+          <img src="../src/A380_stands.png" alt="Map of approved taxi routes for A380" class="map-image">
+          <div class="caption" id="a380stands-caption">Parking stands for Airbus A380</div>
+
+          <div class="image-grid">
+            <div>
+              <img src="../src/VPP_1634.jpg" alt="Airport runway">
+              <div class="caption" id="runway-caption">Runway 16/34</div>
+            </div>
+            <div>
+              <img src="../src/A380_UNNT.jpg" alt="A380 at Tolmachevo">
+              <div class="caption" id="a380-caption">Airbus A380 at Tolmachevo Airport</div>
+            </div>
+          </div>
+
+          <h3 id="facts-title">Interesting Facts</h3>
+          <p id="fact1">Tolmachevo Airport was founded in 1957 and was initially used as a military airfield. It only received civilian airport status in 1963.</p>
+          <p id="fact2">In 2017, the airport set a record by serving 25,000 passengers in one day, which became an absolute maximum for the Siberian region.</p>
+          <p id="fact3">The airport has a unique runway lighting system that allows aircraft to land in the complex weather conditions typical of Siberia.</p>
+          <p id="fact4">The high-speed exits L (Lima) and H (Hotel) were modernized in 2020 and allow to reduce taxiing time by 30% compared to regular taxiways.</p>
         </div>
       </div>
 
-      <h2 id="facts-title">Interesting Facts</h2>
-      <p id="fact1">Tolmachevo Airport was founded in 1957 and was initially used as a military airfield. It only received civilian airport status in 1963.</p>
-      <p id="fact2">In 2017, the airport set a record by serving 25,000 passengers in one day, which became an absolute maximum for the Siberian region.</p>
-      <p id="fact3">The airport has a unique runway lighting system that allows aircraft to land in the complex weather conditions typical of Siberia.</p>
-      <p id="fact4">The high-speed exits L (Lima) and H (Hotel) were modernized in 2020 and allow to reduce taxiing time by 30% compared to regular taxiways.</p>
-      
+      <!-- For Departures -->
+      <div class="section">
+        <button class="section-header" onclick="toggleSection(this)">
+          <h2>For Departures</h2>
+          <span class="arrow">▼</span>
+        </button>
+        <div class="section-content">
+          <div class="info-box">
+            <h3>Departure Procedure</h3>
+            <ol>
+              <li>Obtain engine start clearance (DEL 135.400)</li>
+              <li>After engine start, contact ground control (GND 121.700)</li>
+              <li>Follow ground controller instructions to the runway</li>
+              <li>At the holding point, contact tower (TWR 118.500 or 126.700)</li>
+              <li>Obtain takeoff clearance</li>
+            </ol>
+          </div>
+
+          <div class="warning">
+            <h3>Important for Departures</h3>
+            <p>When departing from RWY 16/34, pay attention to the altitude restriction zone near Severny Airport (UNCC).</p>
+            <p>Minimum overflight altitude over UNCC is 2000 feet.</p>
+          </div>
+
+          <h3>Recommended Departure Routes</h3>
+          <ul>
+            <li><strong>Westbound:</strong> DCT KOVEL R474 KOGET</li>
+            <li><strong>Eastbound:</strong> DCT NERUL R343 NILKA</li>
+            <li><strong>Southbound:</strong> DCT TULUN B453 KADIR</li>
+            <li><strong>Northbound:</strong> DCT KOVEL R474 TOMSK</li>
+          </ul>
+
+          <img src="../src/departure_routes.png" alt="Departure routes map" class="map-image">
+          <div class="caption">Main departure routes from UNNT</div>
+        </div>
+      </div>
+
+      <!-- For Arrivals -->
+      <div class="section">
+        <button class="section-header" onclick="toggleSection(this)">
+          <h2>For Arrivals</h2>
+          <span class="arrow">▼</span>
+        </button>
+        <div class="section-content">
+          <div class="info-box">
+            <h3>Approach Procedure</h3>
+            <ol>
+              <li>Listen to ATIS (131.300) for current information</li>
+              <li>Contact approach (APP 127.500) at 50-60 NM distance</li>
+              <li>Follow approach controller instructions</li>
+              <li>At 10-15 NM you will be handed over to tower (TWR)</li>
+              <li>After landing, follow ground controller (GND 121.700) instructions</li>
+            </ol>
+          </div>
+
+          <h3>Approach Charts</h3>
+          <ul>
+            <li><strong>ILS/DME RWY 25:</strong> KOVEL1A, KOVEL1B</li>
+            <li><strong>VOR/DME RWY 07:</strong> NERUL1A, NERUL1B</li>
+            <li><strong>NDB/DME RWY 16:</strong> TOLMA1A</li>
+            <li><strong>Visual RWY 34:</strong> VIZUAL34</li>
+          </ul>
+
+          <div class="warning">
+            <h3>Approach Features</h3>
+            <p>When approaching RWY 07, be aware of high-rise buildings 5 km from the runway end.</p>
+            <p>Minimum safe altitude in this sector is 1500 feet until 4 DME.</p>
+          </div>
+
+          <img src="../src/arrival_routes.png" alt="Approach routes map" class="map-image">
+          <div class="caption">Main approach procedures for UNNT</div>
+        </div>
+      </div>
+
+      <!-- For VFR Flights -->
+      <div class="section">
+        <button class="section-header" onclick="toggleSection(this)">
+          <h2>For VFR Flights</h2>
+          <span class="arrow">▼</span>
+        </button>
+        <div class="section-content">
+          <div class="info-box">
+            <h3>VFR Flight Rules in UNNT Zone</h3>
+            <ul>
+              <li>All VFR flights must be coordinated with ATC</li>
+              <li>Minimum altitude in airport zone - 1500 feet AGL</li>
+              <li>Flights over residential areas below 2000 feet are prohibited</li>
+              <li>Monitoring UNNT_ATIS (131.300) is mandatory</li>
+            </ul>
+          </div>
+
+          <h3>Recommended VFR Routes</h3>
+          <ul>
+            <li><strong>Northern Route:</strong> Along the Ob River, avoiding UNCC zone</li>
+            <li><strong>Eastern Route:</strong> Along power lines to Berdsk, then along Berdsk Bay</li>
+            <li><strong>Southern Route:</strong> Along M-52 highway to Mochishche airfield (UNNM)</li>
+          </ul>
+
+          <div class="warning">
+            <h3>VFR Restrictions</h3>
+            <p>VFR flights in UNNT zone are prohibited between 22:00 and 06:00 local time.</p>
+            <p>Maximum VFR speed within 5 NM of the airport is 250 knots.</p>
+          </div>
+
+          <img src="../src/vfr_routes.png" alt="VFR routes map" class="map-image">
+          <div class="caption">Recommended VFR routes around UNNT</div>
+        </div>
+      </div>
+
       <div style="text-align: center; margin-top: 20px;">
         <a href="https://discord.gg/unnt" class="discord-link" target="_blank">
           <img src="../src/discord2.png" alt="Discord" class="discord-icon">
@@ -348,6 +586,26 @@
   </div>
 
   <script>
+    // Function to toggle sections
+    function toggleSection(button) {
+      const section = button.parentElement;
+      const content = section.querySelector('.section-content');
+      const arrow = button.querySelector('.arrow');
+      
+      content.style.display = content.style.display === 'none' ? 'block' : 'none';
+      arrow.textContent = content.style.display === 'none' ? '►' : '▼';
+    }
+
+    // Close all sections by default
+    document.addEventListener('DOMContentLoaded', function() {
+      document.querySelectorAll('.section-content').forEach(content => {
+        content.style.display = 'none';
+      });
+      document.querySelectorAll('.arrow').forEach(arrow => {
+        arrow.textContent = '►';
+      });
+    });
+
     // Translations object
     const translations = {
       en: {
