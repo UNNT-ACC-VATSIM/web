@@ -398,7 +398,9 @@
       }
     }
 
-
+    .language-section:not(.active) {
+      display: none;
+    }
     /* Дополнительные медиазапросы для очень маленьких экранов */
     @media (max-width: 400px) {
       .logo {
@@ -428,12 +430,7 @@
       .simulator-icon {
         height: 20px;
       }
-      
     
-    /* Скрыть неактивную версию языка */
-    .language-section:not(.active) {
-      display: none;
-    }
   </style>
 </head>
 <body>
