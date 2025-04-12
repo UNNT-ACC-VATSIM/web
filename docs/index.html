@@ -12,10 +12,10 @@
   </div>
   <nav class="nav-menu">
     <div class="language-switcher">
-      <button class="lang-btn active" data-lang="ru" onclick="switchLanguage('ru')" style="position: fixed; bottom: 20px; right: 20px;">
+      <button class="lang-btn active" data-lang="ru" onclick="switchLanguage('ru')">
         <img src="src/RU.jpg" alt="Русский" class="lang-flag" title="Русский">
       </button>
-      <button class="lang-btn" data-lang="en" onclick="switchLanguage('en')" style="position: fixed; bottom: 20px; right: 80px;">
+      <button class="lang-btn" data-lang="en" onclick="switchLanguage('en')">
         <img src="src/UK.jpg" alt="English" class="lang-flag" title="English">
       </button>
     </div>
@@ -54,15 +54,15 @@
       <h2 id="about-title"></h2>
       <p id="about-text"></p>
       <div class="grid-container">
-        <div class="card">
+        <div class="info-card">
           <h3 id="students-title"></h3>
           <p id="students-text"></p>
         </div>
-        <div class="card">
+        <div class="info-card">
           <h3 id="territory-title"></h3>
           <p id="territory-text"></p>
         </div>
-        <div class="card">
+        <div class="info-card">
           <h3 id="stats-title"></h3>
           <p id="stats-text"></p>
         </div>
@@ -71,56 +71,72 @@
     <section>
       <h2 id="airports-title"></h2>
       <div class="grid-container">
-        <div class="card">
-          <h3><strong>UNNT</strong></h3>
+        <div class="airport-card">
+          <div class="card-content">
+            <h3><strong>UNNT</strong></h3>
+            <p id="unnt-text"></p>
+          </div>
           <img src="src/UNNT_TERMINAL_3.jpg" alt="UNNT Airport" loading="lazy">
-          <p id="unnt-text"></p>
         </div>
-        <div class="card">
-          <h3><strong>UNOO</strong></h3>
-          <img src="src/UNOO_TERMINAL.png" alt="UNNT Airport" loading="lazy">
-          <p id="unoo-text"></p>
+        <div class="airport-card">
+          <div class="card-content">
+            <h3><strong>UNOO</strong></h3>
+            <p id="unoo-text"></p>
+          </div>
+          <img src="src/UNOO_TERMINAL.png" alt="UNOO Airport" loading="lazy">
         </div>
-        <div class="card">
-          <h3><strong>UNBG</strong></h3>
-          <img src="src/UNBG_TERMINAL.png" alt="UNNT Airport" loading="lazy">
-          <p id="unbg-text"></p>
+        <div class="airport-card">
+          <div class="card-content">
+            <h3><strong>UNBG</strong></h3>
+            <p id="unbg-text"></p>
+          </div>
+          <img src="src/UNBG_TERMINAL.png" alt="UNBG Airport" loading="lazy">
         </div>
-        <div class="card">
-          <h3><strong>UNBB</strong></h3>
-          <img src="src/UNBB_TERMINAL.png" alt="UNNT Airport" loading="lazy">
-          <p id="unbb-text"></p>
+        <div class="airport-card">
+          <div class="card-content">
+            <h3><strong>UNBB</strong></h3>
+            <p id="unbb-text"></p>
+          </div>
+          <img src="src/UNBB_TERMINAL.png" alt="UNBB Airport" loading="lazy">
         </div>
-        <div class="card">
-          <h3><strong>UNTT</strong></h3>
-          <img src="src/UNTT_TERMINAL_1.jpg" alt="UNNT Airport" loading="lazy">
-          <p id="untt-text"></p>
+        <div class="airport-card">
+          <div class="card-content">
+            <h3><strong>UNTT</strong></h3>
+            <p id="untt-text"></p>
+          </div>
+          <img src="src/UNTT_TERMINAL_1.jpg" alt="UNTT Airport" loading="lazy">
         </div>
-        <div class="card">
-          <h3><strong>UNEE</strong></h3>
-          <img src="src/UNEE_TERMINAL_1.png" alt="UNNT Airport" loading="lazy">
-          <p id="unee-text"></p>
+        <div class="airport-card">
+          <div class="card-content">
+            <h3><strong>UNEE</strong></h3>
+            <p id="unee-text"></p>
+          </div>
+          <img src="src/UNEE_TERMINAL_1.png" alt="UNEE Airport" loading="lazy">
         </div>
-        <div class="card">
-          <h3><strong>UNWW</strong></h3>
-          <img src="src/UNWW_TERMINAL.jpg" alt="UNNT Airport" loading="lazy">
-          <p id="unww-text"></p>
+        <div class="airport-card">
+          <div class="card-content">
+            <h3><strong>UNWW</strong></h3>
+            <p id="unww-text"></p>
+          </div>
+          <img src="src/UNWW_TERMINAL.jpg" alt="UNWW Airport" loading="lazy">
         </div>
-        <div class="card">
-          <h3><strong>UNSS</strong></h3>
-          <img src="src/UNSS_TERMINAL.jpg" alt="UNNT Airport" loading="lazy">
-          <p id="unss-text"></p>
+        <div class="airport-card">
+          <div class="card-content">
+            <h3><strong>UNSS</strong></h3>
+            <p id="unss-text"></p>
+          </div>
+          <img src="src/UNSS_TERMINAL.jpg" alt="UNSS Airport" loading="lazy">
         </div>
       </div>
     </section>
     <section>
       <h2 id="info-title"></h2>
       <div class="grid-container">
-        <div class="card">
+        <div class="info-card">
           <h3 id="contacts-title"></h3>
           <p id="contacts-text"><a href="mailto:unnt-fir@outlook.com"></a></p>
         </div>
-        <div class="card">
+        <div class="info-card">
           <h3 id="support-title"></h3>
           <p id="support-text"></p>
         </div>
