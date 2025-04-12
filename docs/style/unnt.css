@@ -303,6 +303,48 @@
     margin-top: 5px;
   }
 
+  /* Section styles */
+  .section {
+    margin-bottom: 20px;
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .section-header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    background-color: var(--primary);
+    color: white;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+    transition: background-color 0.3s;
+  }
+
+  .section-header:hover {
+    background-color: #0055aa;
+  }
+
+  .section-header h2 {
+    color: white;
+    margin: 0;
+    font-size: 1.3em;
+  }
+
+  .section-content {
+    padding: 15px;
+    background-color: white;
+  }
+
+  .arrow {
+    font-size: 0.9em;
+    transition: transform 0.3s;
+  }
+
   /* Стили для планшетов и десктопов */
   @media (min-width: 768px) {
     .airport-signature {
@@ -387,6 +429,18 @@
       right: 15px;
       backdrop-filter: none;
     }
+
+    .section-header {
+      padding: 20px 25px;
+    }
+
+    .section-header h2 {
+      font-size: 1.5em;
+    }
+
+    .section-content {
+      padding: 20px;
+    }
   }
 
   .language-section:not(.active) {
@@ -420,5 +474,13 @@
     
     .simulator-icon {
       height: 20px;
+    }
+
+    .section-header {
+      padding: 12px 15px;
+    }
+
+    .section-header h2 {
+      font-size: 1.1em;
     }
   }
