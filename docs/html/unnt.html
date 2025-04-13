@@ -8,6 +8,11 @@
   <link rel="stylesheet" href="../style/unnt.css">
 </head>
 <body>
+    <div id="imageModal" class="modal">
+      <span class="close">&times;</span>
+      <img class="modal-content" id="modalImage">
+      <div id="caption" class="modal-caption"></div>
+    </div>
   <div class="airport-signature">
   </div>
 
@@ -604,7 +609,44 @@
       document.querySelectorAll('.arrow').forEach(arrow => {
         arrow.textContent = '►';
       });
+
+      // Инициализация модального окна для изображений
+      initImageModal();
     });
+
+    // Функция для работы модального окна с изображениями
+    function initImageModal() {
+      // Получаем модальное окно
+      const modal = document.getElementById("imageModal");
+      
+      // Получаем изображение внутри модального окна и подпись
+      const modalImg = document.getElementById("modalImage");
+      const captionText = document.getElementById("caption");
+      
+      // Получаем элемент для закрытия
+      const span = document.getElementsByClassName("close")[0];
+      
+      // Добавляем обработчики кликов на все изображения с классом map-image
+      document.querySelectorAll('.map-image').forEach(img => {
+        img.onclick = function() {
+          modal.style.display = "block";
+          modalImg.src = this.src;
+          captionText.innerHTML = this.nextElementSibling.innerHTML;
+        }
+      });
+      
+      // Закрытие при клике на крестик
+      span.onclick = function() { 
+        modal.style.display = "none";
+      }
+      
+      // Закрытие при клике вне изображения
+      modal.onclick = function(event) {
+        if (event.target === modal) {
+          modal.style.display = "none";
+        }
+      }
+    }
 
     // Translations object
     const translations = {
