@@ -589,66 +589,113 @@
       <a href="https://discord.gg/unnt" style="color: var(--discord); text-decoration: none;" target="_blank" id="discord-footer-link">Official Discord server</a>
     </footer>
   </div>
-
   <script>
     // Function to toggle sections
     function toggleSection(button) {
       const section = button.parentElement;
       const content = section.querySelector('.section-content');
       const arrow = button.querySelector('.arrow');
-      
+  
       content.style.display = content.style.display === 'none' ? 'block' : 'none';
       arrow.textContent = content.style.display === 'none' ? '►' : '▼';
     }
-
+  
     // Close all sections by default
-    document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', function () {
       document.querySelectorAll('.section-content').forEach(content => {
         content.style.display = 'none';
       });
       document.querySelectorAll('.arrow').forEach(arrow => {
         arrow.textContent = '►';
       });
-
+  
       // Инициализация модального окна для изображений
       initImageModal();
+  
+      // Установка языка
+      const savedLang = localStorage.getItem('preferredLanguage');
+      const browserLang = navigator.language.startsWith('ru') ? 'ru' : 'en';
+      const defaultLang = savedLang || browserLang;
+      switchLanguage(defaultLang);
     });
-
-    // Функция для работы модального окна с изображениями
+  
+    // Modal image viewer
     function initImageModal() {
-      // Получаем модальное окно
       const modal = document.getElementById("imageModal");
-      
-      // Получаем изображение внутри модального окна и подпись
       const modalImg = document.getElementById("modalImage");
       const captionText = document.getElementById("caption");
-      
-      // Получаем элемент для закрытия
       const span = document.getElementsByClassName("close")[0];
-      
-      // Добавляем обработчики кликов на все изображения с классом map-image
+  
       document.querySelectorAll('.map-image').forEach(img => {
-        img.onclick = function() {
+        img.onclick = function () {
           modal.style.display = "block";
           modalImg.src = this.src;
           captionText.innerHTML = this.nextElementSibling.innerHTML;
-        }
+          resetZoomAndPosition(modalImg);
+          enableZoomAndDrag(modalImg);
+        };
       });
-      
-      // Закрытие при клике на крестик
-      span.onclick = function() { 
+  
+      span.onclick = function () {
         modal.style.display = "none";
-      }
-      
-      // Закрытие при клике вне изображения
-      modal.onclick = function(event) {
+      };
+  
+      modal.onclick = function (event) {
         if (event.target === modal) {
           modal.style.display = "none";
         }
+      };
+    }
+  
+    // Enable zoom and drag
+    function enableZoomAndDrag(imgElement) {
+      let scale = 1;
+      let translateX = 0;
+      let translateY = 0;
+      let isDragging = false;
+      let startX, startY;
+  
+      imgElement.onwheel = function (event) {
+        event.preventDefault();
+        const delta = event.deltaY > 0 ? -0.1 : 0.1;
+        scale = Math.min(Math.max(0.5, scale + delta), 5);
+        updateTransform();
+      };
+  
+      imgElement.onmousedown = function (e) {
+        e.preventDefault();
+        isDragging = true;
+        startX = e.clientX;
+        startY = e.clientY;
+        imgElement.style.cursor = 'grabbing';
+      };
+  
+      window.onmousemove = function (e) {
+        if (!isDragging) return;
+        translateX += (e.clientX - startX) / scale;
+        translateY += (e.clientY - startY) / scale;
+        startX = e.clientX;
+        startY = e.clientY;
+        updateTransform();
+      };
+  
+      window.onmouseup = function () {
+        isDragging = false;
+        imgElement.style.cursor = 'default';
+      };
+  
+      function updateTransform() {
+        imgElement.style.transform = `scale(${scale}) translate(${translateX}px, ${translateY}px)`;
+        imgElement.style.transformOrigin = 'center center';
+        imgElement.style.transition = 'transform 0.05s ease-out';
       }
     }
-
-    // Translations object
+  
+    function resetZoomAndPosition(imgElement) {
+      imgElement.style.transform = 'scale(1) translate(0px, 0px)';
+    }
+  
+    // Language switcher
     const translations = {
       en: {
         "main-title": "Novosibirsk Tolmachevo Airport",
@@ -719,23 +766,18 @@
         "home-link": "Главная"
       }
     };
-
-    // Function to switch language
+  
     function switchLanguage(lang) {
-      // Update button states
       document.querySelectorAll('.lang-btn').forEach(btn => {
         btn.classList.toggle('active', btn.dataset.lang === lang);
       });
-      
-      // Hide all language sections
+  
       document.querySelectorAll('.language-section').forEach(section => {
         section.classList.remove('active');
       });
-      
-      // Show active language section
+  
       document.getElementById(lang === 'en' ? 'english' : 'russian').classList.add('active');
-      
-      // Update content
+  
       const elements = document.querySelectorAll('[id]');
       elements.forEach(element => {
         const key = element.id;
@@ -747,21 +789,9 @@
           }
         }
       });
-      
-      // Save language preference
+  
       localStorage.setItem('preferredLanguage', lang);
     }
-
-    // Set default language
-    document.addEventListener('DOMContentLoaded', function() {
-      // Check for saved preference or use browser language
-      const savedLang = localStorage.getItem('preferredLanguage');
-      const browserLang = navigator.language.startsWith('ru') ? 'ru' : 'en';
-      const defaultLang = savedLang || browserLang;
-      
-      // Set the language
-      switchLanguage(defaultLang);
-    });
-  </script>
+  </script>  
 </body>
 </html>
