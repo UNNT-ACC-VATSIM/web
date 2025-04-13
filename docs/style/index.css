@@ -20,8 +20,8 @@ body::-webkit-scrollbar {
 
 #scrollToTopBtn {
   position: fixed;
-  bottom: 40px;
-  right: 40px;
+  bottom: 60px;
+  right: 15px;
   z-index: 100;
   width: 48px;
   height: 48px;
