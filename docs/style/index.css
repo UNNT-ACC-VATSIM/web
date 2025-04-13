@@ -301,7 +301,7 @@ footer {
 @media (min-width: 768px) {
   .language-switcher {
     position: fixed;
-    bottom: 70px;
+    bottom: 15px;
     right: 15px;
     backdrop-filter: none;
   }
