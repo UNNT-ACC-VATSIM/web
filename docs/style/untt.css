@@ -8,6 +8,14 @@
   --vatsim: #1a4b8c;
   --frequency: #4b0082;
 }
+html, body {
+  overflow: auto;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE */
+}
+body::-webkit-scrollbar {
+  display: none; /* Chrome */
+}
 
 * {
   box-sizing: border-box;

@@ -8,6 +8,15 @@
   --vatsim: #1a4b8c;
   --frequency: #4b0082;
 }
+/* Для элемента, например, body или div */
+html, body {
+  overflow: auto;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE */
+}
+body::-webkit-scrollbar {
+  display: none; /* Chrome */
+}
 
 .language-switcher {
   position: fixed;
@@ -28,7 +37,6 @@
   padding: 0;
   transition: all 0.3s;
 }
-
 .lang-flag {
   height: 20px;
   width: 30px;
@@ -36,19 +44,16 @@
   transition: all 0.3s;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
 }
-
 .lang-btn.active .lang-flag {
   transform: scale(1.1);
   box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
   opacity: 1;
   filter: none;
 }
-
 .lang-btn:not(.active) .lang-flag {
   opacity: 0.6;
   filter: grayscale(30%);
 }
-
 .lang-btn:hover .lang-flag {
   transform: scale(1.1);
   opacity: 1;
