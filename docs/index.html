@@ -1,271 +1,303 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Региональный центр Новосибирск | VATSIM</title>
   <link rel="icon" href="src/UNNT_ACC.png" type="image/png">
   <link rel="stylesheet" href="style/index.css">
 </head>
 <body>
-  <button id="scrollToTopBtn" title="Наверх" aria-label="Наверх">
+  <!-- Кнопка "Наверх" -->
+  <button id="scrollToTopBtn" aria-label="Наверх" class="scroll-top-btn">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="white">
       <path d="M4 12l1.41 1.41L11 7.83V20h2V7.83l5.59 5.58L20 12l-8-8-8 8z"/>
     </svg>
   </button>
-  </button>
-  <div class="airport-signature">
-  </div>
-  <nav class="nav-menu">
-    <div class="nav-container">
-      <a href="index.html" class="nav-link home-link" id="home-link">Главная</a>
-      <a href="html/unnt.html" class="nav-link">UNNT</a>
-      <a href="html/unoo.html" class="nav-link">UNOO</a>
-      <a href="html/unbg.html" class="nav-link">UNBG</a>
-      <a href="html/unbb.html" class="nav-link">UNBB</a>
-      <a href="html/untt.html" class="nav-link">UNTT</a>
-      <a href="html/unee.html" class="nav-link">UNEE</a>
-      <a href="html/unww.html" class="nav-link">UNWW</a>
-      <a href="html/unss.html" class="nav-link">UNSS</a>
-    </div>
-    <div class="language-switcher">
-      <button class="lang-btn active" data-lang="ru" onclick="switchLanguage('ru')">
-        <img src="src/RU.jpg" alt="Русский" class="lang-flag" title="Русский">
-      </button>
-      <button class="lang-btn" data-lang="en" onclick="switchLanguage('en')">
-        <img src="src/UK.jpg" alt="English" class="lang-flag" title="English">
-      </button>
-    </div>
-  </nav>
-  <header>
-    <div class="logo-container">
-      <img src="src/UNNT_ACC.png" alt="Логотип UNNT ACC" class="logo">
-      <img src="src/VATRUS.png" alt="Логотип VATSIM" class="logo">
-    </div>
-    <h1 id="main-title"></h1>
-    <p id="main-subtitle"></p>
-    <div style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;">
-      <a href="https://vatsim.net" class="vatsim-link" target="_blank">
-        <img src="src/vatsim.png" alt="VATSIM" class="vatsim-icon">
-        <span id="vatsim-link-text"></span>
-      </a>
-      <a href="https://discord.gg/unnt" class="discord-link" target="_blank">
-        <img src="src/discord2.png" alt="Discord" class="discord-icon">
-        <span id="discord-link-text"></span>
-      </a>
+
+  <!-- Шапка сайта -->
+  <header class="site-header">
+    <div class="header-content">
+      <div class="logo-container">
+        <img src="src/UNNT_ACC.png" alt="Логотип UNNT ACC" class="logo">
+        <img src="src/VATRUS.png" alt="Логотип VATSIM" class="logo">
+      </div>
+      <h1 id="main-title">Региональный центр Новосибирск</h1>
+      <p class="header-subtitle white-text" id="main-subtitle">Официальный центр управления воздушным движением в сети VATSIM</p>
+      <div class="header-links">
+        <a href="https://vatsim.net" class="header-link" target="_blank">
+          <img src="src/vatsim.png" alt="VATSIM">
+          <span id="vatsim-link-text">Официальный сайт VATSIM</span>
+        </a>
+        <a href="https://discord.gg/unnt" class="header-link" target="_blank">
+          <img src="src/discord2.png" alt="Discord">
+          <span id="discord-link-text">Наш Discord-сервер</span>
+        </a>
+      </div>
     </div>
   </header>
-  <main>
-    <section>
-      <h2 id="about-title"></h2>
-      <p id="about-text"></p>
-      <div class="grid-container">
-        <div class="info-card">
-          <h3 id="students-title"></h3>
-          <p id="students-text"></p>
+
+  <!-- Навигационное меню -->
+  <nav class="main-nav">
+    <div class="nav-container">
+      <div class="nav-links">
+        <a href="index.html" class="nav-link home-link" id="home-link">Главная</a>
+        <a href="html/unnt.html" class="nav-link">UNNT</a>
+        <a href="html/unoo.html" class="nav-link">UNOO</a>
+        <a href="html/unbg.html" class="nav-link">UNBG</a>
+        <a href="html/unbb.html" class="nav-link">UNBB</a>
+        <a href="html/untt.html" class="nav-link">UNTT</a>
+        <a href="html/unee.html" class="nav-link">UNEE</a>
+        <a href="html/unww.html" class="nav-link">UNWW</a>
+        <a href="html/unss.html" class="nav-link">UNSS</a>
+      </div>
+      <div class="language-switcher">
+        <button class="lang-btn active" data-lang="ru" onclick="switchLanguage('ru')">
+          <img src="src/RU.jpg" alt="Русский" class="lang-flag" title="Русский">
+        </button>
+        <button class="lang-btn" data-lang="en" onclick="switchLanguage('en')">
+          <img src="src/UK.jpg" alt="English" class="lang-flag" title="English">
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Основное содержимое -->
+  <main class="main-content">
+    <!-- О центре -->
+    <section class="section">
+      <h2 id="about-title" class="section-title">О нашем центре</h2>
+      <p id="about-text" class="section-text">Региональный центр Новосибирск (Novosibirsk FIR) обеспечивает управление воздушным движением в Сибирском регионе в сети VATSIM. Наш центр объединяет несколько крупных аэропортов и контролирует обширное воздушное пространство.</p>
+      
+      <div class="cards-grid">
+        <div class="card info-card">
+          <h3 id="students-title" class="card-title">Более 40 студентов</h3>
+          <p id="students-text" class="card-text">Мы ради каждому и ждём любого в нашей дружной команде</p>
         </div>
-        <div class="info-card">
-          <h3 id="territory-title"></h3>
-          <p id="territory-text"></p>
+        
+        <div class="card info-card">
+          <h3 id="territory-title" class="card-title">Территория</h3>
+          <p id="territory-text" class="card-text">Мы контролируем воздушное пространство площадью более 3 млн км², включая 8 крупных аэропортов</p>
         </div>
-        <div class="info-card">
-          <h3 id="stats-title"></h3>
-          <p id="stats-text"></p>
+        
+        <div class="card info-card">
+          <h3 id="stats-title" class="card-title">Статистика</h3>
+          <p id="stats-text" class="card-text">Около 150 рейсов выполняется в аэропорты нашего РегЦ ежедневно</p>
         </div>
       </div>
     </section>
-    <section>
-      <h2 id="airports-title"></h2>
-      <div class="grid-container">
-        <div class="airport-card">
+
+    <!-- Аэропорты -->
+    <section class="section">
+      <h2 id="airports-title" class="section-title">Подконтрольные аэропорты</h2>
+      <div class="cards-grid">
+        <div class="card airport-card">
           <div class="card-content">
-            <h3><strong>UNNT</strong></h3>
-            <p id="unnt-text"></p>
+            <h3 class="airport-name"><strong>UNNT</strong></h3>
+            <p id="unnt-text" class="airport-description">Новосибирск (Толмачёво)<br>Крупнейший международный аэропорт за Уралом</p>
           </div>
-          <img src="src/UNNT_TERMINAL_SUNSET.png" alt="UNNT Airport" loading="lazy">
+          <img src="src/UNNT_TERMINAL_SUNSET.png" alt="UNNT Airport" loading="lazy" class="airport-image">
         </div>
-        <div class="airport-card">
+        
+        <div class="card airport-card">
           <div class="card-content">
-            <h3><strong>UNOO</strong></h3>
-            <p id="unoo-text"></p>
+            <h3 class="airport-name"><strong>UNOO</strong></h3>
+            <p id="unoo-text" class="airport-description">Омск (Центральный)<br>Аэропорт федерального значения</p>
           </div>
-          <img src="src/UNOO_TERMINAL.png" alt="UNOO Airport" loading="lazy">
+          <img src="src/UNOO_TERMINAL.png" alt="UNOO Airport" loading="lazy" class="airport-image">
         </div>
-        <div class="airport-card">
+        
+        <div class="card airport-card">
           <div class="card-content">
-            <h3><strong>UNBG</strong></h3>
-            <p id="unbg-text"></p>
+            <h3 class="airport-name"><strong>UNBG</strong></h3>
+            <p id="unbg-text" class="airport-description">Горно-Алтайск<br>Региональный аэропорт. Один из самых красивых в нашей стране</p>
           </div>
-          <img src="src/UNBG_TERMINAL.png" alt="UNBG Airport" loading="lazy">
+          <img src="src/UNBG_TERMINAL.png" alt="UNBG Airport" loading="lazy" class="airport-image">
         </div>
-        <div class="airport-card">
+        
+        <div class="card airport-card">
           <div class="card-content">
-            <h3><strong>UNBB</strong></h3>
-            <p id="unbb-text"></p>
+            <h3 class="airport-name"><strong>UNBB</strong></h3>
+            <p id="unbb-text" class="airport-description">Барнаул (Михайловка)<br>Международный аэропорт</p>
           </div>
-          <img src="src/UNBB_TERMINAL.png" alt="UNBB Airport" loading="lazy">
+          <img src="src/UNBB_TERMINAL.png" alt="UNBB Airport" loading="lazy" class="airport-image">
         </div>
-        <div class="airport-card">
+        
+        <div class="card airport-card">
           <div class="card-content">
-            <h3><strong>UNTT</strong></h3>
-            <p id="untt-text"></p>
+            <h3 class="airport-name"><strong>UNTT</strong></h3>
+            <p id="untt-text" class="airport-description">Томск (Богашёво)<br>Федеральный аэропорт</p>
           </div>
-          <img src="src/UNTT_TERMINAL_1.jpg" alt="UNTT Airport" loading="lazy">
+          <img src="src/UNTT_TERMINAL_1.jpg" alt="UNTT Airport" loading="lazy" class="airport-image">
         </div>
-        <div class="airport-card">
+        
+        <div class="card airport-card">
           <div class="card-content">
-            <h3><strong>UNEE</strong></h3>
-            <p id="unee-text"></p>
+            <h3 class="airport-name"><strong>UNEE</strong></h3>
+            <p id="unee-text" class="airport-description">Кемерово<br>Региональный аэропорт</p>
           </div>
-          <img src="src/UNEE_TERMINAL_1.png" alt="UNEE Airport" loading="lazy">
+          <img src="src/UNEE_TERMINAL_1.png" alt="UNEE Airport" loading="lazy" class="airport-image">
         </div>
-        <div class="airport-card">
+        
+        <div class="card airport-card">
           <div class="card-content">
-            <h3><strong>UNWW</strong></h3>
-            <p id="unww-text"></p>
+            <h3 class="airport-name"><strong>UNWW</strong></h3>
+            <p id="unww-text" class="airport-description">Новокузнецк (Спиченково)<br>Региональный аэропорт</p>
           </div>
-          <img src="src/UNWW_TERMINAL.jpg" alt="UNWW Airport" loading="lazy">
+          <img src="src/UNWW_TERMINAL.jpg" alt="UNWW Airport" loading="lazy" class="airport-image">
         </div>
-        <div class="airport-card">
+        
+        <div class="card airport-card">
           <div class="card-content">
-            <h3><strong>UNSS</strong></h3>
-            <p id="unss-text"></p>
+            <h3 class="airport-name"><strong>UNSS</strong></h3>
+            <p id="unss-text" class="airport-description">Стрежевой<br>Местный аэропорт</p>
           </div>
-          <img src="src/UNSS_TERMINAL.jpg" alt="UNSS Airport" loading="lazy">
+          <img src="src/UNSS_TERMINAL.jpg" alt="UNSS Airport" loading="lazy" class="airport-image">
         </div>
       </div>
     </section>
-    <section>
-      <h2 id="info-title"></h2>
-      <div class="grid-container">
-        <div class="info-card">
-          <h3 id="contacts-title"></h3>
-          <p id="contacts-text"><a href="mailto:unnt-fir@outlook.com"></a></p>
+
+    <!-- Контакты -->
+    <section class="section">
+      <h2 id="info-title" class="section-title">Полезная информация</h2>
+      <div class="cards-grid">
+        <div class="card info-card">
+          <h3 id="contacts-title" class="card-title">Контакты</h3>
+          <p id="contacts-text" class="card-text">Для связи с нами, пожалуйста, используйте адрес электронной почты: <a href="mailto:unnt-fir@outlook.com" class="email-link">unnt-fir@outlook.com</a></p>
         </div>
-        <div class="info-card">
-          <h3 id="support-title"></h3>
-          <p id="support-text"></p>
+        
+        <div class="card info-card">
+          <h3 id="support-title" class="card-title">Службы поддержки</h3>
+          <p id="support-text" class="card-text">Наши диспетчеры всегда готовы помочь. Для получения помощи присоединяйтесь к нашему Discord-серверу.</p>
         </div>
       </div>
     </section>
   </main>
-  <footer id="footer-text">
+
+  <!-- Подвал -->
+  <footer class="site-footer" id="footer-text">
+    © 2025 Аэропорт Толмачёво (Новосибирск). Все права защищены. Не связан с реальными авиационными службами.
   </footer>
 
   <script>
     // Translations object
-    const translations = {
-      en: {
-        "main-title": "Novosibirsk Regional Center",
-        "main-subtitle": "Official Air Traffic Control Center on VATSIM network",
-        "vatsim-link-text": "Official VATSIM website",
-        "discord-link-text": "Our Discord server",
-        "about-title": "About Our Center",
-        "about-text": "Novosibirsk FIR provides air traffic control services in the Siberian region on the VATSIM network. Our center combines several major airports and controls vast airspace.<br><br>",
-        "students-title": "More 40 students currently in training",
-        "students-text": "We welcome everyone and look forward to having you in our friendly team",
-        "territory-title": "Territory",
-        "territory-text": "We control airspace of over 3 million km², including 8 major airports and many regional ones.",
-        "stats-title": "Statistics",
-        "stats-text": "About 150 flights operate daily to the airports in our FIR",
-        "airports-title": "Controlled Airports",
-        "unnt-text": "Novosibirsk (Tolmachevo)<br>The largest international airport beyond the Urals",
-        "unoo-text": "Omsk (Tsentralny)<br>Airport of federal significance",
-        "unbg-text": "Gorno-Altaysk<br>Regional airport. One of the most beautiful in our country",
-        "unbb-text": "Barnaul (Mikhailovka)<br>International airport",
-        "untt-text": "Tomsk (Bogashevo)<br>Federal airport",
-        "unee-text": "Kemerovo<br>Regional airport",
-        "unww-text": "Novokuznetsk (Spichenkovo)<br>Regional airport",
-        "unss-text": "Strejevoi<br>Local airport",
-        "info-title": "Useful Information",
-        "contacts-title": "Contacts",
-        "contacts-text": "To contact us, please use the email address: <a href=\"mailto:unnt-fir@outlook.com\">unnt-fir@outlook.com</a>",
-        "support-title": "Support Services",
-        "support-text": "Our controllers are always ready to help. For assistance, join our Discord server and contact team members.",
-        "footer-text": "© 2025 Tolmachevo Airport (Novosibirsk). All rights reserved. Not affiliated with real aviation services.",        
-        "home-link": "Home"
-      },
-      ru: {
-        "main-title": "Региональный центр Новосибирск",
-        "main-subtitle": "Официальный центр управления воздушным движением в сети VATSIM",
-        "vatsim-link-text": "Официальный сайт VATSIM",
-        "discord-link-text": "Наш Discord-сервер",
-        "about-title": "О нашем центре",
-        "about-text": "Региональный центр Новосибирск (Novosibirsk FIR) обеспечивает управление воздушным движением в Сибирском регионе в сети VATSIM. Наш центр объединяет несколько крупных аэропортов и контролирует обширное воздушное пространство.<br><br>",
-        "students-title": "Более 40 студентов проходят обучение в данный момент",
-        "students-text": "Мы ради каждому и ждём любого в нашей дружной команде",
-        "territory-title": "Территория",
-        "territory-text": "Мы контролируем воздушное пространство площадью более 3 млн км², включая 8 крупных аэропортов и множество региональных.",
-        "stats-title": "Статистика",
-        "stats-text": "Около 150 рейсов выполняется в аэропорты нашего РегЦ ежедневно",
-        "airports-title": "Подконтрольные аэропорты",
-        "unnt-text": "Новосибирск (Толмачёво)<br>Крупнейший международный аэропорт за Уралом",
-        "unoo-text": "Омск (Центральный)<br>Аэропорт федерального значения",
-        "unbg-text": "Горно-Алтайск<br>Региональный аэропорт. Один из самых красивых в нашей стране",
-        "unbb-text": "Барнаул (Михайловка)<br>Международный аэропорт",
-        "untt-text": "Томск (Богашёво)<br>Федеральный аэропорт",
-        "unee-text": "Кемерово<br>Региональный аэропорт",
-        "unww-text": "Новокузнецк (Спиченково)<br>Региональный аэропорт",
-        "unss-text": "Стрежевой<br>Местный аэропорт",
-        "info-title": "Полезная информация",
-        "contacts-title": "Контакты",
-        "contacts-text": "Для связи с нами, пожалуйста, используйте адрес электронной почты: <a href=\"mailto:unnt-fir@outlook.com\">unnt-fir@outlook.com</a>",
-        "support-title": "Службы поддержки",
-        "support-text": "Наши диспетчеры всегда готовы помочь. Для получения помощи, присоединяйтесь к нашему Discord-серверу и обратитесь к членам команды.",
-        "footer-text": "© 2025 Аэропорт Толмачёво (Новосибирск). Все права защищены. Не связан с реальными авиационными службами.",
-        "home-link": "Главная"
-      }
-    };
-
-    // Function to switch language
-    function switchLanguage(lang) {
-      // Update button states
-      document.querySelectorAll('.lang-btn').forEach(btn => {
-        btn.classList.toggle('active', btn.dataset.lang === lang);
-      });
-      
-      // Update content
-      const elements = document.querySelectorAll('[id]');
-      elements.forEach(element => {
-        const key = element.id;
-        if (translations[lang] && translations[lang][key]) {
-          if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
-            element.value = translations[lang][key];
-          } else {
-            element.innerHTML = translations[lang][key];
-          }
-        }
-      });
-      
-      // Update HTML lang attribute
-      document.documentElement.lang = lang;
-      
-      // Save language preference
-      localStorage.setItem('preferredLanguage', lang);
-    }
-
-    // Set default language
-    document.addEventListener('DOMContentLoaded', function() {
-      // Check for saved preference or use browser language
-      const savedLang = localStorage.getItem('preferredLanguage');
-      const browserLang = navigator.language.startsWith('ru') ? 'ru' : 'en';
-      const defaultLang = savedLang || browserLang;
-      
-      // Set the language
-      switchLanguage(defaultLang);
-    });
-    const btn = document.getElementById("scrollToTopBtn");
-
-window.addEventListener('scroll', () => {
-  if (window.scrollY > 300) {
-    btn.classList.add("visible");
-  } else {
-    btn.classList.remove("visible");
+const translations = {
+  en: {
+    "main-title": "Novosibirsk Regional Center",
+    "main-subtitle": "Official Air Traffic Control Center on VATSIM network",
+    "vatsim-link-text": "Official VATSIM website",
+    "discord-link-text": "Our Discord server",
+    "about-title": "About Our Center",
+    "about-text": "Novosibirsk FIR provides air traffic control services in the Siberian region on the VATSIM network. Our center combines several major airports and controls vast airspace.",
+    "students-title": "More than 40 students",
+    "students-text": "We welcome everyone and look forward to having you in our friendly team",
+    "territory-title": "Territory",
+    "territory-text": "We control airspace of over 3 million km², including 8 major airports.",
+    "stats-title": "Statistics",
+    "stats-text": "About 150 flights operate daily to the airports in our FIR",
+    "airports-title": "Controlled Airports",
+    "unnt-text": "Novosibirsk (Tolmachevo)<br>The largest international airport beyond the Urals",
+    "unoo-text": "Omsk (Tsentralny)<br>Airport of federal significance",
+    "unbg-text": "Gorno-Altaysk<br>Regional airport. One of the most beautiful in our country",
+    "unbb-text": "Barnaul (Mikhailovka)<br>International airport",
+    "untt-text": "Tomsk (Bogashevo)<br>Federal airport",
+    "unee-text": "Kemerovo<br>Regional airport",
+    "unww-text": "Novokuznetsk (Spichenkovo)<br>Regional airport",
+    "unss-text": "Strejevoi<br>Local airport",
+    "info-title": "Useful Information",
+    "contacts-title": "Contacts",
+    "contacts-text": "To contact us, please use the email address: <a href=\"mailto:unnt-fir@outlook.com\" class=\"email-link\">unnt-fir@outlook.com</a>",
+    "support-title": "Support Services",
+    "support-text": "Our controllers are always ready to help. For assistance, join our Discord server.",
+    "footer-text": "© 2025 Tolmachevo Airport (Novosibirsk). All rights reserved. Not affiliated with real aviation services.",        
+    "home-link": "Home"
+  },
+  ru: {
+    "main-title": "Региональный центр Новосибирск",
+    "main-subtitle": "Официальный центр управления воздушным движением в сети VATSIM",
+    "vatsim-link-text": "Официальный сайт VATSIM",
+    "discord-link-text": "Наш Discord-сервер",
+    "about-title": "О нашем центре",
+    "about-text": "Региональный центр Новосибирск (Novosibirsk FIR) обеспечивает управление воздушным движением в Сибирском регионе в сети VATSIM. Наш центр объединяет несколько крупных аэропортов и контролирует обширное воздушное пространство.",
+    "students-title": "Более 40 студентов",
+    "students-text": "Мы ради каждому и ждём любого в нашей дружной команде",
+    "territory-title": "Территория",
+    "territory-text": "Мы контролируем воздушное пространство площадью более 3 млн км², включая 8 крупных аэропортов.",
+    "stats-title": "Статистика",
+    "stats-text": "Около 150 рейсов выполняется в аэропорты нашего РегЦ ежедневно",
+    "airports-title": "Подконтрольные аэропорты",
+    "unnt-text": "Новосибирск (Толмачёво)<br>Крупнейший международный аэропорт за Уралом",
+    "unoo-text": "Омск (Центральный)<br>Аэропорт федерального значения",
+    "unbg-text": "Горно-Алтайск<br>Региональный аэропорт. Один из самых красивых в нашей стране",
+    "unbb-text": "Барнаул (Михайловка)<br>Международный аэропорт",
+    "untt-text": "Томск (Богашёво)<br>Федеральный аэропорт",
+    "unee-text": "Кемерово<br>Региональный аэропорт",
+    "unww-text": "Новокузнецк (Спиченково)<br>Региональный аэропорт",
+    "unss-text": "Стрежевой<br>Местный аэропорт",
+    "info-title": "Полезная информация",
+    "contacts-title": "Контакты",
+    "contacts-text": "Для связи с нами, пожалуйста, используйте адрес электронной почты: <a href=\"mailto:unnt-fir@outlook.com\" class=\"email-link\">unnt-fir@outlook.com</a>",
+    "support-title": "Службы поддержки",
+    "support-text": "Наши диспетчеры всегда готовы помочь. Для получения помощи присоединяйтесь к нашему Discord-серверу.",
+    "footer-text": "© 2025 Аэропорт Толмачёво (Новосибирск). Все права защищены. Не связан с реальными авиационными службами.",
+    "home-link": "Главная"
   }
-});
+};
 
-btn.addEventListener("click", () => {
-  window.scrollTo({ top: 0, behavior: 'smooth' });
+// Function to switch language
+function switchLanguage(lang) {
+  // Update button states
+  document.querySelectorAll('.lang-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.lang === lang);
+  });
+  
+  // Update content
+  const elements = document.querySelectorAll('[id]');
+  elements.forEach(element => {
+    const key = element.id;
+    if (translations[lang] && translations[lang][key]) {
+      if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
+        element.value = translations[lang][key];
+      } else {
+        element.innerHTML = translations[lang][key];
+      }
+    }
+  });
+  
+  // Update HTML lang attribute
+  document.documentElement.lang = lang;
+  
+  // Save language preference
+  localStorage.setItem('preferredLanguage', lang);
+}
+
+// Set default language
+document.addEventListener('DOMContentLoaded', function() {
+  // Check for saved preference or use browser language
+  const savedLang = localStorage.getItem('preferredLanguage');
+  const browserLang = navigator.language.startsWith('ru') ? 'ru' : 'en';
+  const defaultLang = savedLang || browserLang;
+  
+  // Set the language
+  switchLanguage(defaultLang);
+  
+  // Scroll to top button
+  const scrollToTopBtn = document.getElementById("scrollToTopBtn");
+  
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 300) {
+      scrollToTopBtn.classList.add('visible');
+    } else {
+      scrollToTopBtn.classList.remove('visible');
+    }
+  });
+  
+  scrollToTopBtn.addEventListener('click', () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  });
 });
   </script>
 </body>

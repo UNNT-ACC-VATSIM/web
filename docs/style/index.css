@@ -1,63 +1,193 @@
+/* Основные переменные */
 :root {
   --primary: #0066cc;
+  --primary-dark: #004080;
+  --primary-light: #4d9eff;
   --background: #f0f8ff;
+  --white: #ffffff;
   --text: #2a2a2a;
+  --text-light: #555;
+  --text-lighter: #777;
   --card-bg: #ffffff;
-  --radius: 20px;
+  --radius: 12px;
+  --radius-lg: 20px;
+  --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  --shadow-hover: 0 8px 20px rgba(0, 0, 0, 0.15);
   --discord: #5865F2;
   --vatsim: #1a4b8c;
-  --frequency: #4b0082;
-}
-/* Для элемента, например, body или div */
-html, body {
-  overflow: auto;
-  scrollbar-width: none; /* Firefox */
-  -ms-overflow-style: none; /* IE */
-}
-body::-webkit-scrollbar {
-  display: none; /* Chrome */
+  --transition: all 0.3s ease;
 }
 
-#scrollToTopBtn {
-  position: fixed;
-  bottom: 60px;
-  right: 15px;
-  z-index: 100;
-  width: 48px;
-  height: 48px;
-  background-color: #007BFF;
-  border: none;
-  border-radius: 50%;
-  cursor: pointer;
+/* Базовые стили */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  height: 100%;
+}
+
+body {
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  background-color: var(--background);
+  color: var(--text);
+  line-height: 1.6;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Вспомогательные классы */
+.white-text {
+  color: var(--white);
+}
+
+/* Шапка сайта */
+.site-header {
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+  color: var(--white);
+  padding: 2rem 1rem;
+  text-align: center;
+  box-shadow: var(--shadow);
+  position: relative;
+  overflow: hidden;
+}
+
+.site-header::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('src/UNNT_TERMINAL_SUNSET.png') center/cover no-repeat;
+  opacity: 0.15;
+  z-index: 0;
+}
+
+.header-content {
+  position: relative;
+  z-index: 1;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+.logo-container {
+  display: flex;
   justify-content: center;
   align-items: center;
-  padding: 0;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
-  transition: opacity 0.7s ease, visibility 0.7s ease; /* было 0.4s — стало 0.7s */
-  opacity: 0;
-  visibility: hidden;
+  gap: 1.5rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+
+.logo {
+  height: 5rem;
+  width: auto;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+}
+
+.site-header h1 {
+  font-size: 2.2rem;
+  margin-bottom: 0.5rem;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.header-subtitle {
+  font-size: 1.1rem;
+  margin-bottom: 1.5rem;
+  opacity: 0.9;
+}
+
+.header-links {
   display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
 }
 
-#scrollToTopBtn.visible {
-  opacity: 1;
-  visibility: visible;
+.header-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(5px);
+  color: var(--white);
+  padding: 0.6rem 1.2rem;
+  border-radius: 2rem;
+  text-decoration: none;
+  font-weight: 600;
+  transition: var(--transition);
+  border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-#scrollToTopBtn:hover {
-  background-color: #0056b3;
+.header-link:hover {
+  background-color: rgba(255, 255, 255, 0.25);
+  transform: translateY(-2px);
+  text-decoration: none;
+}
+
+.header-link img {
+  height: 1.2rem;
+  width: auto;
+}
+
+/* Навигационное меню */
+.main-nav {
+  background-color: var(--primary-dark);
+  padding: 0.5rem 1rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.nav-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center; /* Центрируем все содержимое */
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.nav-links {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  align-items: center; /* Выравниваем элементы по центру вертикально */
+}
+
+/* Остальные стили остаются без изменений */
+.nav-link {
+  color: var(--white);
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius);
+  transition: var(--transition);
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+.nav-link:hover, .nav-link.active {
+  background-color: rgba(255, 255, 255, 0.2);
+  text-decoration: none;
+}
+
+.nav-link.home-link {
+  background-color: rgba(255, 255, 255, 0.1);
+  font-weight: 600;
 }
 
 .language-switcher {
-  position: fixed;
-  bottom: 15px;
-  right: 15px;
   display: flex;
-  gap: 5px;
-  padding: 5px;
-  border-radius: 30px;
-  z-index: 100;
-  backdrop-filter: blur(5px);
+  gap: 0.5rem;
+  margin-left: 0.5rem; /* Небольшой отступ от последней ссылки */
 }
 
 .lang-btn {
@@ -65,319 +195,268 @@ body::-webkit-scrollbar {
   border: none;
   cursor: pointer;
   padding: 0;
-  transition: all 0.3s;
+  transition: var(--transition);
 }
+
 .lang-flag {
-  height: 20px;
-  width: 30px;
-  border-radius: 3px;
-  transition: all 0.3s;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+  height: 1.25rem;
+  width: 1.75rem;
+  border-radius: 0.2rem;
+  transition: var(--transition);
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
 }
+
 .lang-btn.active .lang-flag {
   transform: scale(1.1);
-  box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.4);
   opacity: 1;
   filter: none;
 }
+
 .lang-btn:not(.active) .lang-flag {
-  opacity: 0.6;
-  filter: grayscale(30%);
+  opacity: 0.7;
+  filter: grayscale(20%);
 }
+
 .lang-btn:hover .lang-flag {
   transform: scale(1.1);
   opacity: 1;
   filter: none;
 }
 
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-body {
-  font-family: "Segoe UI", sans-serif;
-  background-color: var(--background);
-  color: var(--text);
-  line-height: 1.6;
-  padding: 0;
-}
-
-/* Верхняя подпись аэропорта */
-.airport-signature {
-  background: #002244;
-  color: white;
-  text-align: center;
-  padding: 8px 0;
-  font-size: 0.9em;
-  font-weight: bold;
-}
-
-/* Меню навигации */
-.nav-menu {
-  background: #003366;
-  padding: 10px 0;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-  position: relative;
-}
-
-.nav-container {
+/* Основное содержимое */
+.main-content {
+  flex: 1;
+  padding: 2rem 1rem;
   max-width: 1200px;
   margin: 0 auto;
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 5px;
-  padding: 0 10px;
+  width: 100%;
 }
 
-.nav-link {
-  color: white;
-  text-decoration: none;
-  padding: 6px 10px;
-  border-radius: var(--radius);
-  transition: background-color 0.3s;
-  font-size: 0.9em;
+.section {
+  margin-bottom: 3rem;
 }
 
-.home-link {
-  background-color: #004080;
-  font-weight: bold;
-}
-
-.nav-link:hover {
-  background-color: rgba(255,255,255,0.2);
-}
-
-.home-link:hover {
-  background-color: #0055aa;
-}
-
-/* Заголовок */
-header {
-  background: var(--primary);
-  color: white;
-  padding: 25px 15px;
-  text-align: center;
-  border-radius: 0 0 var(--radius) var(--radius);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-  margin-bottom: 20px;
-  background-image: linear-gradient(135deg, #0066cc, #004080);
+.section-title {
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
+  color: var(--primary);
   position: relative;
+  padding-bottom: 0.5rem;
 }
 
-.logo-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  margin-bottom: 10px;
+.section-title::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 4rem;
+  height: 3px;
+  background: linear-gradient(90deg, var(--primary), transparent);
+  border-radius: 3px;
 }
 
-.logo {
-  height: 70px;
-  width: auto;
+.section-text {
+  margin-bottom: 1.5rem;
+  color: var(--text-light);
 }
 
-h1 {
-  font-size: 1.8em;
-  margin-bottom: 8px;
-}
-
-/* Кнопки */
-.discord-link, .vatsim-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  background-color: var(--discord);
-  color: white;
-  padding: 8px 15px;
-  border-radius: 15px;
-  text-decoration: none;
-  font-weight: bold;
-  margin-top: 12px;
-  transition: background-color 0.3s;
-  font-size: 0.9em;
-}
-
-.discord-icon, .vatsim-icon {
-  height: 20px;
-  width: auto;
-}
-
-.discord-link:hover {
-  background-color: #4752C4;
-}
-
-.vatsim-link {
-  background-color: var(--vatsim);
-}
-
-.vatsim-link:hover {
-  background-color: #0d3a7a;
-}
-
-/* Основной контент */
-main {
-  background-color: var(--card-bg);
-  padding: 20px;
-  max-width: 900px;
-  margin: 0 auto;
-  border-radius: var(--radius);
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.05);
-}
-
-h2 {
-  font-size: 1.5em;
-  margin: 20px 0 12px;
-  color: var(--primary);
-}
-
-h3 {
-  font-size: 1.2em;
-  margin: 15px 0 8px;
-  color: var(--primary);
-}
-
-.grid-container {
+/* Сетки */
+.cards-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 15px;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
 }
 
-/* Стили для карточек аэропортов */
-.airport-card {
-  background: #e6f2ff;
-  padding: 15px;
-  border-radius: var(--radius);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  position: relative;
+/* Карточки */
+.card {
+  background: var(--card-bg);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow);
   overflow: hidden;
-  min-height: 150px;
-  transition: all 0.3s ease;
+  transition: var(--transition);
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-hover);
+}
+
+.info-card {
+  padding: 1.5rem;
+}
+
+.card-title {
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
+  color: var(--primary);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.card-title::before {
+  content: "";
+  display: inline-block;
+  width: 0.5rem;
+  height: 1.5rem;
+  background-color: var(--primary);
+  border-radius: 0.5rem;
+}
+
+.card-text {
+  margin-bottom: 0;
+  color: var(--text-light);
+}
+
+.airport-card {
+  position: relative;
+  height: 12rem;
+  overflow: hidden;
 }
 
 .airport-card .card-content {
   position: relative;
   z-index: 2;
-  transition: all 0.3s ease;
+  padding: 1.5rem;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
+  color: var(--white);
+  transition: var(--transition);
 }
 
-.airport-card img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+.airport-name {
+  color: var(--white);
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.airport-description {
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 0;
+}
+
+.airport-image {
   position: absolute;
   top: 0;
   left: 0;
-  opacity: 0;
-  transition: all 0.5s ease;
-  transform: translateY(100%);
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+  transition: var(--transition);
 }
 
 .airport-card:hover .card-content {
-  opacity: 0;
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.9));
 }
 
-.airport-card:hover img {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.airport-card h3 {
-  margin: 0;
+/* Ссылки */
+a {
   color: var(--primary);
-  transition: opacity 0.3s ease;
+  transition: var(--transition);
 }
 
-.airport-card p {
-  margin: 10px 0 0;
-  transition: opacity 0.3s ease;
+a:hover {
+  color: var(--primary-dark);
+  text-decoration: none;
 }
 
-/* Стили для информационных карточек */
-.info-card {
-  background: #e6f2ff;
-  padding: 15px;
-  border-radius: var(--radius);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  transition: all 0.3s ease;
+.email-link {
+  color: var(--primary);
+  font-weight: 500;
 }
 
-.info-card:hover {
-  background-color: #d0e3ff;
-  transform: translateY(-5px);
+.email-link:hover {
+  color: var(--primary-dark);
+  text-decoration: none;
 }
 
-.info-card h3 {
-  margin: 0 0 10px 0;
-}
-
-.info-card p {
-  font-size: 16px;
-  color: #333;
-  margin: 0;
-}
-
-footer {
+/* Подвал */
+.site-footer {
   text-align: center;
-  margin-top: 30px;
-  padding: 15px;
-  font-size: 0.85em;
-  color: #666;
+  padding: 1.5rem;
+  background-color: var(--primary-dark);
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.9rem;
 }
 
-@media (min-width: 768px) {
-  .language-switcher {
-    position: fixed;
-    bottom: 15px;
-    right: 15px;
-    backdrop-filter: none;
+/* Кнопка "Наверх" */
+.scroll-top-btn {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 99;
+  width: 3rem;
+  height: 3rem;
+  background-color: var(--primary);
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: var(--shadow);
+  transition: var(--transition);
+  opacity: 0;
+  visibility: hidden;
+}
+
+.scroll-top-btn.visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+.scroll-top-btn:hover {
+  background-color: var(--primary-dark);
+  transform: translateY(-3px);
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  .site-header h1 {
+    font-size: 1.8rem;
   }
   
-  .airport-signature {
-    font-size: 1em;
-    padding: 10px 0;
-  }
-  
-  .nav-menu {
-    padding: 15px 0;
-  }
-  
-  .nav-container {
-    gap: 10px;
-    padding: 0 20px;
-  }
-  
-  .nav-link, .home-link {
-    padding: 8px 15px;
-    font-size: 1em;
-  }
-  
-  header {
-    padding: 40px 20px;
+  .header-subtitle {
+    font-size: 1rem;
   }
   
   .logo {
-    height: 90px;
+    height: 4rem;
   }
   
-  h1 {
-    font-size: 2.5em;
+  .nav-container {
+    flex-direction: column;
   }
   
-  .discord-link, .vatsim-link {
-    padding: 10px 20px;
-    font-size: 1em;
+  .nav-links {
+    justify-content: center;
   }
   
-  .discord-icon, .vatsim-icon {
-    height: 25px;
+  .language-switcher {
+    margin-top: 0.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .site-header h1 {
+    font-size: 1.5rem;
   }
   
-  .lang-flag {
-    height: 25px;
-    width: 35px;
+  .logo-container {
+    gap: 1rem;
+  }
+  
+  .header-link {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+  }
+  
+  .cards-grid {
+    grid-template-columns: 1fr;
   }
 }
