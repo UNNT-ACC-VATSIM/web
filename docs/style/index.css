@@ -430,7 +430,58 @@ a:hover {
   background-color: var(--primary-dark);
   transform: translateY(-3px);
 }
+/* Гамбургер-меню (изначально скрыто) */
+.mobile-menu-btn {
+  display: none;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 0.5rem;
+}
 
+/* На ПК (ширина > 768px) – обычное меню */
+.nav-links {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.language-switcher {
+  display: flex;
+  gap: 0.5rem;
+}
+
+/* На мобильных (ширина ≤ 768px) – гамбургер и скрытое меню */
+@media (max-width: 768px) {
+  .mobile-menu-btn {
+    display: block; /* Показываем гамбургер */
+  }
+
+  .nav-links {
+    display: none; /* Скрываем обычные ссылки */
+    flex-direction: column;
+    width: 100%;
+    background-color: var(--primary-dark);
+    padding: 0.5rem 0;
+  }
+
+  .nav-container.mobile-active .nav-links {
+    display: flex; /* Показываем при открытии */
+  }
+
+  .language-switcher {
+    display: none; /* Скрываем переключатель языка */
+  }
+
+  .nav-container.mobile-active .language-switcher {
+    display: flex; /* Показываем при открытии */
+    width: 100%;
+    justify-content: center;
+    padding: 0.5rem 0;
+  }
+}
 /* Адаптивность */
 @media (max-width: 768px) {
   .site-header h1 {
@@ -475,4 +526,5 @@ a:hover {
   .cards-grid {
     grid-template-columns: 1fr;
   }
-}
+
+  }

@@ -40,6 +40,7 @@
   <!-- Навигационное меню -->
   <nav class="main-nav">
     <div class="nav-container">
+      <button class="mobile-menu-btn" aria-label="Меню">☰</button>
       <div class="nav-links">
         <a href="index.html" class="nav-link home-link" id="home-link">Главная</a>
         <a href="html/unnt.html" class="nav-link">UNNT</a>
@@ -61,7 +62,6 @@
       </div>
     </div>
   </nav>
-
   <!-- Основное содержимое -->
   <main class="main-content">
     <!-- О центре -->
@@ -298,6 +298,28 @@ document.addEventListener('DOMContentLoaded', function() {
       behavior: 'smooth'
     });
   });
+});
+const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+const navContainer = document.querySelector('.nav-container');
+
+// Плавное открытие/закрытие меню
+mobileMenuBtn.addEventListener('click', () => {
+  navContainer.classList.toggle('mobile-active');
+  
+  // Меняем иконку гамбургера на "✕" при открытии
+  if (navContainer.classList.contains('mobile-active')) {
+    mobileMenuBtn.textContent = '✕';
+  } else {
+    mobileMenuBtn.textContent = '☰';
+  }
+});
+
+// Закрытие меню при ресайзе (если вдруг пользователь повернул телефон)
+window.addEventListener('resize', () => {
+  if (window.innerWidth > 768) {
+    navContainer.classList.remove('mobile-active');
+    mobileMenuBtn.textContent = '☰';
+  }
 });
   </script>
 </body>
