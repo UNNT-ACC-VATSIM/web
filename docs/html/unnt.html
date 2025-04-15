@@ -48,6 +48,7 @@
   <!-- Навигационное меню -->
   <nav class="main-nav">
     <div class="nav-container">
+      <button class="mobile-menu-btn" aria-label="Меню">☰</button>
       <div class="nav-links">
         <a href="../index.html" class="nav-link" id="home-link">Главная</a>
         <a href="unnt.html" class="nav-link home-link">UNNT</a>
@@ -562,6 +563,48 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
 });
+
+  document.addEventListener('DOMContentLoaded', function() {
+  const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+  const navContainer = document.querySelector('.nav-container');
+  
+  // Инициализация иконки
+  mobileMenuBtn.innerHTML = '☰';
+  
+  // Плавное открытие/закрытие меню
+  mobileMenuBtn.addEventListener('click', () => {
+    navContainer.classList.toggle('mobile-active');
+    
+    // Меняем иконку гамбургера на "✕" при открытии
+    if (navContainer.classList.contains('mobile-active')) {
+      mobileMenuBtn.innerHTML = '✕';
+    } else {
+      mobileMenuBtn.innerHTML = '☰';
+    }
+  });
+  
+  // Закрытие меню при клике вне его области
+  document.addEventListener('click', (e) => {
+    if (!e.target.closest('.nav-container') && !e.target.closest('.mobile-menu-btn')) {
+      navContainer.classList.remove('mobile-active');
+      mobileMenuBtn.innerHTML = '☰';
+    }
+  });
+  
+  // Закрытие меню при ресайзе
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 768) {
+      navContainer.classList.remove('mobile-active');
+      mobileMenuBtn.innerHTML = '☰';
+    }
+  });
+  
+  // Добавляем индексы для анимации пунктов меню
+  document.querySelectorAll('.nav-link').forEach((link, index) => {
+    link.style.setProperty('--i', index);
+  });
+});
+
   </script>  
 </body>
 </html>
