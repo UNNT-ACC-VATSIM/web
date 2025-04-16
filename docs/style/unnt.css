@@ -401,16 +401,27 @@ body {
   color: var(--text-light);
 }
 
-/* Специфические стили для страницы аэропорта */
+.simulator-section {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin: 2.5rem 0;
+}
+
 .simulator {
   background: #f5f0ff;
   border-left: 4px solid #8a2be2;
   padding: 1.8rem;
   border-radius: 12px;
   flex: 1;
-  min-width: 320px;
-  max-width: 750px; /* Увеличено с 700px */
+  min-width: 280px;
   box-shadow: 0 4px 12px rgba(138, 43, 226, 0.1);
+}
+
+.simulator:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(138, 43, 226, 0.3);
+  background: linear-gradient(15deg, #f5f0ff, #f0e5ff);
 }
 
 .simulator-links {
@@ -418,6 +429,13 @@ body {
   gap: 1rem;
   flex-wrap: wrap;
   margin: 1.2rem 0;
+}
+
+.metar-simulator-container {
+  display: flex;
+  gap: 2rem;
+  width: 100%;
+  flex-wrap: wrap;
 }
 
 .simulator-link {
@@ -446,15 +464,22 @@ body {
 
 /* Блок с важной информацией теперь будет занимать ту же ширину */
 .warning {
+  display: flex;
+  flex-direction: column;
   background: #fff3e6;
-  border-left: 4px solid #ff9900;
+  border-left: 4px solid rgb(255, 153, 0);
   padding: 1.5rem;
-  margin: 0 0 2rem 0;
   border-radius: var(--radius);
   width: 100%;
-  max-width: 750px; /* Совпадает с шириной блока сценариев */
+  max-width: 780px;
+  margin-top: 0;
 }
 
+.warning:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(255, 153, 0, 0.3);
+  background: linear-gradient(15deg, #fff3e6, #fff3e6);
+}
 .info-box {
   background: #e6f7ff;
   border-left: 4px solid var(--primary);
@@ -546,10 +571,12 @@ body {
   border-radius: 12px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
   overflow: hidden;
+  flex: 1;
+  min-width: 300px;
   max-width: 360px;
-  margin: 0;
   transition: all 0.3s ease;
 }
+
 
 .metar-widget-wrapper:hover {
   transform: translateY(-3px);
@@ -751,4 +778,32 @@ body {
   .metar-widget-container {
     height: 360px;
   }
+}
+
+/* Адаптация под мобилки с любовью */
+@media (max-width: 768px) {
+  .simulator::after {
+    right: 10px;
+    bottom: 5px;
+  }
+
+  .simulator, .warning {
+    max-width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+  }
+  /* Адаптация для мобильных устройств */
+@media (max-width: 768px) {
+  .metar-simulator-container {
+    flex-direction: column;
+  }
+  
+  .metar-widget-wrapper {
+    max-width: 100%;
+  }
+  
+  .simulator, .warning {
+    max-width: 100%;
+  }
+}
 }
