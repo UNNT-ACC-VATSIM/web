@@ -92,7 +92,7 @@
             </div>
           </div>
   
-          <div class="metar-widget-wrapper enlarged-metar">
+          <div class="metar-widget-wrapper">
             <div class="metar-header">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#ffffff" class="weather-icon">
                 <path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM19 18H6c-2.21 0-4-1.79-4-4 0-2.05 1.53-3.76 3.56-3.97l1.07-.11.5-.95C8.08 7.14 9.94 6 12 6c2.62 0 4.88 1.86 5.39 4.43l.3 1.5 1.53.11c1.56.1 2.78 1.41 2.78 2.96 0 1.65-1.35 3-3 3z"/>
@@ -101,11 +101,10 @@
               <span class="metar-update-time">Обновлено: <span id="update-time">сейчас</span></span>
             </div>
             <div class="metar-widget-container">
-              <a href="https://metar-taf.com/UNNT" id="metartaf-473j1Qeg">METAR Novosibirsk Tolmachevo Airport</a>
-              <script async defer crossorigin="anonymous" src="https://metar-taf.com/embed-js/UNNT?bg_color=%23f5f0ff&layout=landscape&speed=ms&qnh=hPa&rh=dp&target=473j1Qeg"></script>
+              <a href="https://metar-taf.com/UNNT" id="metartaf-8boJEuZP" style="display:block;width:350px;height:280px;">METAR Novosibirsk Tolmachevo Airport</a>
+              <script async defer crossorigin="anonymous" src="https://metar-taf.com/embed-js/UNNT?bg_color=%2323f5f&layout=landscape&speed=ms&qnh=hPa&rh=dp&target=8boJEuZP"></script>
             </div>
           </div>
-        </div>
   
         <!-- Важное ограничение - перенесенный блок -->
         <div class="warning-fullwidth">
@@ -227,78 +226,159 @@
       </div>
 
       <!-- Для вылетающих -->
-      <div class="section">
-        <button class="section-header" onclick="toggleSection(this)">
-          <h2 id="dep"></h2>
-          <span class="arrow">▼</span>
-        </button>
-        <div class="section-content">
-          <div class="info-box">
-            <h3>Процедура вылета</h3>
-            <ol>
-              <li>Получите разрешение на запуск двигателей (DEL 135.400)</li>
-              <li>После запуска двигателей свяжитесь с диспетчером руления (GND 121.700)</li>
-              <li>Следуйте указаниям диспетчера руления до ВПП</li>
-              <li>На исполнительном старте свяжитесь с диспетчером управления (TWR 118.500 или 126.700)</li>
-              <li>Получите разрешение на взлёт</li>
-            </ol>
-          </div>
+<!-- Для вылетающих -->
+<div class="section">
+  <button class="section-header" onclick="toggleSection(this)">
+    <h2 id="dep">Для вылетающих</h2>
+    <span class="arrow">▼</span>
+  </button>
+  <div class="section-content">
+    <div class="section-content-inner">
+      <div class="procedure-card">
+        <h3>Процедура вылета</h3>
+        <ol>
+          <li>Получите разрешение на запуск двигателей (DEL 135.400)</li>
+          <li>После запуска двигателей свяжитесь с диспетчером руления (GND 121.700)</li>
+          <li>Следуйте указаниям диспетчера руления до ВПП</li>
+          <li>На исполнительном старте свяжитесь с диспетчером управления (TWR 118.500 или 126.700)</li>
+          <li>Получите разрешение на взлёт</li>
+        </ol>
+      </div>
 
-          <div class="warning">
-            <h3>Важно для вылетающих</h3>
-            <p>При вылете с ВПП 16/34 обратите внимание на зону ограничения высоты в районе аэродрома Северный (UNCC).</p>
-            <p>Минимальная высота пролёта над UNCC - 2000 футов.</p>
-          </div>
+      <div class="section-warning">
+        <h3>Важно для вылетающих</h3>
+        <p>При вылете с ВПП 16/34 обратите внимание на зону ограничения высоты в районе аэродрома Северный (UNCC).</p>
+        <p>Минимальная высота пролёта над UNCC - 2000 футов.</p>
+      </div>
 
-          <h3>Рекомендуемые маршруты вылета</h3>
-          <ul>
-            <li><strong>Западное направление:</strong> DCT KOVEL R474 KOGET</li>
-            <li><strong>Восточное направление:</strong> DCT NERUL R343 NILKA</li>
-            <li><strong>Южное направление:</strong> DCT TULUN B453 KADIR</li>
-            <li><strong>Северное направление:</strong> DCT KOVEL R474 TOMSK</li>
-          </ul>
-
-          <img src="../src/departure_routes.png" alt="Карта маршрутов вылета" class="map-image">
-          <div class="caption">Основные маршруты вылета из UNNT</div>
+      <h3 class="section-subtitle">Рекомендуемые маршруты вылета</h3>
+      
+      <div class="routes-grid">
+        <div class="route-card">
+          <h4>Западное направление</h4>
+          <p>Основные пункты маршрута:</p>
+          <div class="route">DCT KOVEL R474 KOGET</div>
+        </div>
+        
+        <div class="route-card">
+          <h4>Восточное направление</h4>
+          <p>Основные пункты маршрута:</p>
+          <div class="route">DCT NERUL R343 NILKA</div>
+        </div>
+        
+        <div class="route-card">
+          <h4>Южное направление</h4>
+          <p>Основные пункты маршрута:</p>
+          <div class="route">DCT TULUN B453 KADIR</div>
+        </div>
+        
+        <div class="route-card">
+          <h4>Северное направление</h4>
+          <p>Основные пункты маршрута:</p>
+          <div class="route">DCT KOVEL R474 TOMSK</div>
         </div>
       </div>
 
-      <!-- Для прилетающих -->
-      <div class="section">
-        <button class="section-header" onclick="toggleSection(this)">
-          <h2 id="arr"></h2>
-          <span class="arrow">▼</span>
-        </button>
-        <div class="section-content">
-          <div class="info-box">
-            <h3>Процедура захода на посадку</h3>
-            <ol>
-              <li>Слушайте ATIS (131.300) для получения актуальной информации</li>
-              <li>Свяжитесь с подходом (APP 127.500) на удалении 50-60 NM</li>
-              <li>Следуйте указаниям диспетчера подхода</li>
-              <li>На удалении 10-15 NM вас передадут диспетчеру управления (TWR)</li>
-              <li>После посадки следуйте указаниям диспетчера руления (GND 121.700)</li>
-            </ol>
-          </div>
+      <img src="../src/departure_routes.png" alt="Карта маршрутов вылета" class="map-image">
+      <div class="caption">Основные маршруты вылета из UNNT</div>
+    </div>
+  </div>
+</div>
 
-          <h3>Схемы захода на посадку</h3>
-          <ul>
-            <li><strong>ILS/DME RWY 25:</strong> KOVEL1A, KOVEL1B</li>
-            <li><strong>VOR/DME RWY 07:</strong> NERUL1A, NERUL1B</li>
-            <li><strong>NDB/DME RWY 16:</strong> TOLMA1A</li>
-            <li><strong>Visual RWY 34:</strong> VIZUAL34</li>
-          </ul>
+<!-- Для прилетающих -->
+<div class="section">
+  <button class="section-header" onclick="toggleSection(this)">
+    <h2 id="arr">Для прилетающих</h2>
+    <span class="arrow">▼</span>
+  </button>
+  <div class="section-content">
+    <div class="section-content-inner">
+      <div class="procedure-card">
+        <h3>Процедура захода на посадку</h3>
+        <ol>
+          <li data-step="1">Слушайте ATIS (131.300) для получения актуальной информации</li>
+          <li data-step="2">Свяжитесь с подходом (APP 127.500) на удалении 50-60 NM</li>
+          <li data-step="3">Следуйте указаниям диспетчера подхода</li>
+          <li data-step="4">На удалении 10-15 NM вас передадут диспетчеру управления (TWR)</li>
+          <li data-step="5">После посадки следуйте указаниям диспетчера руления (GND 121.700)</li>
+        </ol>
+      </div>
 
-          <div class="warning">
-            <h3>Особенности захода</h3>
-            <p>При заходе на ВПП 07 учитывайте наличие высотных зданий в 5 км от торца ВПП.</p>
-            <p>Минимальная безопасная высота в этом секторе - 1500 футов до 4 DME.</p>
-          </div>
+      <div class="section-alert">
+        <h3>Особенности захода</h3>
+        <p>При заходе на ВПП 07 учитывайте наличие высотных зданий в 5 км от торца ВПП.</p>
+        <p>Минимальная безопасная высота в этом секторе - 1500 футов до 4 DME.</p>
+      </div>
 
-          <img src="../src/arrival_routes.png" alt="Карта маршрутов захода" class="map-image">
-          <div class="caption">Основные схемы захода на посадку в UNNT</div>
+      <h3 class="section-subtitle">Схемы захода на посадку</h3>
+      
+      <div class="route-grid">
+        <div class="route-card">
+          <h4>ILS/DME RWY 25</h4>
+          <p>Используемые процедуры:</p>
+          <div class="route">KOVEL1A, KOVEL1B</div>
+          <p>Минимумы: 200ft / 550m</p>
+        </div>
+        
+        <div class="route-card">
+          <h4>VOR/DME RWY 07</h4>
+          <p>Используемые процедуры:</p>
+          <div class="route">NERUL1A, NERUL1B</div>
+          <p>Минимумы: 300ft / 800m</p>
+        </div>
+        
+        <div class="route-card">
+          <h4>NDB/DME RWY 16</h4>
+          <p>Используемые процедуры:</p>
+          <div class="route">TOLMA1A</div>
+          <p>Минимумы: 350ft / 900m</p>
+        </div>
+        
+        <div class="route-card">
+          <h4>Visual RWY 34</h4>
+          <p>Используемые процедуры:</p>
+          <div class="route">VIZUAL34</div>
+          <p>Минимумы: 400ft / 1000m</p>
         </div>
       </div>
+
+      <h3 class="section-subtitle">Частоты подхода</h3>
+      
+      <div class="frequency-grid">
+        <div class="frequency-item">
+          <div>
+            <div class="frequency-name">UNNT_APP</div>
+            <div class="frequency-value">127.500</div>
+          </div>
+        </div>
+        
+        <div class="frequency-item">
+          <div>
+            <div class="frequency-name">UNNT_R_APP</div>
+            <div class="frequency-value">122.000</div>
+          </div>
+        </div>
+        
+        <div class="frequency-item">
+          <div>
+            <div class="frequency-name">UNNT_R1_APP (ППП)</div>
+            <div class="frequency-value">122.000</div>
+          </div>
+        </div>
+        
+        <div class="frequency-item">
+          <div>
+            <div class="frequency-name">UNNT_R2_APP (ПВП)</div>
+            <div class="frequency-value">133.800</div>
+          </div>
+        </div>
+      </div>
+
+      <img src="../src/arrival_routes.png" alt="Карта маршрутов захода" class="map-image">
+      <div class="caption">Основные схемы захода на посадку в UNNT</div>
+    </div>
+  </div>
+</div>
 
       <!-- Для полётов ПВП -->
       <div class="section">
@@ -342,15 +422,26 @@
   </div>
 
   <script>
-    // Function to toggle sections
-    function toggleSection(button) {
-      const section = button.parentElement;
-      const content = section.querySelector('.section-content');
-      const arrow = button.querySelector('.arrow');
+function toggleSection(button) {
+  const section = button.parentElement;
+  const content = section.querySelector('.section-content');
+  const arrow = button.querySelector('.arrow');
   
-      content.style.display = content.style.display === 'none' ? 'block' : 'none';
-      arrow.textContent = content.style.display === 'none' ? '►' : '▼';
-    }
+  // Переключаем класс active для стилизации
+  button.classList.toggle('active');
+  
+  if (content.style.display === 'block') {
+    content.style.display = 'none';
+    arrow.textContent = '▼';
+  } else {
+    content.style.display = 'block';
+    arrow.textContent = '▲';
+    // Прокручиваем к секции, если она открывается
+    setTimeout(() => {
+      section.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }, 100);
+  }
+}
   
     // Close all sections by default
     document.addEventListener('DOMContentLoaded', function () {
