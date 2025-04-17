@@ -408,27 +408,78 @@ body {
   margin: 2.5rem 0;
 }
 
-.simulator {
+.metar-simulator-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+  width: 100%;
+  align-items: flex-start;
+}
+
+.simulator-standalone {
   background: #f5f0ff;
   border-left: 4px solid #8a2be2;
   padding: 1.8rem;
   border-radius: 12px;
-  flex: 1;
-  min-width: 280px;
+  width: auto;
+  max-width: 50%;
   box-shadow: 0 4px 12px rgba(138, 43, 226, 0.1);
+  transition: var(--transition);
+  flex: 1;
 }
 
-.simulator:hover {
+.enlarged-metar {
+  flex: 1;
+  min-width: 380px;
+  max-width: 420px;
+}
+
+.metar-widget-wrapper.enlarged-metar .metar-widget-container {
+  min-height: 320px;
+  max-height: 360px;
+}
+
+.simulator-standalone:hover {
   transform: translateY(-3px);
   box-shadow: 0 10px 25px rgba(138, 43, 226, 0.3);
   background: linear-gradient(15deg, #f5f0ff, #f0e5ff);
 }
 
-.simulator-links {
+.warning-fullwidth {
   display: flex;
-  gap: 1rem;
-  flex-wrap: wrap;
-  margin: 1.2rem 0;
+  flex-direction: column;
+  background: #fff8e6; /* Яркий жёлтый фон */
+  border-left: 4px solid #ff9900; /* Оранжевая граница */
+  padding: 1.5rem;
+  border-radius: var(--radius);
+  width: 100%;
+  box-shadow: 0 4px 12px rgba(255, 153, 0, 0.2);
+  transition: var(--transition);
+}
+
+.warning-fullwidth:hover {
+  background: #fff3d6;
+  box-shadow: 0 6px 16px rgba(255, 153, 0, 0.3);
+  transform: translateY(-2px);
+}
+
+.warning-fullwidth h3 {
+  color: #000000; /* Чёрный цвет заголовка */
+  margin-bottom: 1rem;
+}
+
+.warning-fullwidth p {
+  color: #000000; /* Чёрный цвет основного текста */
+  margin-bottom: 0.8rem;
+}
+
+.warning-fullwidth .map-image {
+  margin-top: 1rem;
+  margin-bottom: 0.8rem;
+}
+
+.warning-fullwidth .caption {
+  color: #555; /* Серый цвет для подписи */
 }
 
 .metar-simulator-container {
@@ -436,6 +487,7 @@ body {
   gap: 2rem;
   width: 100%;
   flex-wrap: wrap;
+  align-items: flex-start;
 }
 
 .simulator-link {
@@ -460,6 +512,22 @@ body {
 .simulator-link:hover {
   background-color: #7b29d1;
   transform: translateY(-2px);
+}
+
+@media (max-width: 900px) {
+  .metar-simulator-container {
+    flex-direction: column;
+  }
+  
+  .simulator-standalone {
+    max-width: 100%;
+    width: 100%;
+  }
+  
+  .enlarged-metar {
+    max-width: 100%;
+    width: 100%;
+  }
 }
 
 /* Блок с важной информацией теперь будет занимать ту же ширину */
