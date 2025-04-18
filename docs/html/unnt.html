@@ -115,14 +115,13 @@
           <div class="caption" id="restriction-caption"></div>
         </div>
       </div>
-  
       <!-- Общая информация -->
-      <div class="section">
-        <button class="section-header" onclick="toggleSection(this)">
-          <h2 id="general-info"></h2>
-          <span class="arrow">▼</span>
+      <div class="accordion-section">
+        <button class="accordion-btn" onclick="toggleSection(this)">
+          <span id="general-info">Общая информация</span>
+          <span class="accordion-arrow">▼</span>
         </button>
-        <div class="section-content">
+        <div class="accordion-content">
           <div class="info-box">
             <h3 id="params-title"></h3>
             <ul>
@@ -226,15 +225,13 @@
       </div>
 
       <!-- Для вылетающих -->
-<!-- Для вылетающих -->
-<div class="section">
-  <button class="section-header" onclick="toggleSection(this)">
-    <h2 id="dep">Для вылетающих</h2>
-    <span class="arrow">▼</span>
-  </button>
-  <div class="section-content">
-    <div class="section-content-inner">
-      <div class="procedure-card">
+      <div class="accordion-section">
+        <button class="accordion-btn" onclick="toggleSection(this)">
+          <span id="dep">Для вылетающих</span>
+          <span class="accordion-arrow">▼</span>
+        </button>
+        <div class="accordion-content">
+          <div class="info-box">
         <h3>Процедура вылета</h3>
         <ol>
           <li>Получите разрешение на запуск двигателей (DEL 135.400)</li>
@@ -286,14 +283,13 @@
 </div>
 
 <!-- Для прилетающих -->
-<div class="section">
-  <button class="section-header" onclick="toggleSection(this)">
-    <h2 id="arr">Для прилетающих</h2>
-    <span class="arrow">▼</span>
+<div class="accordion-section">
+  <button class="accordion-btn" onclick="toggleSection(this)">
+    <span id="arr">Для прилетающих</span>
+    <span class="accordion-arrow">▼</span>
   </button>
-  <div class="section-content">
-    <div class="section-content-inner">
-      <div class="procedure-card">
+  <div class="accordion-content">
+    <div class="info-box">
         <h3>Процедура захода на посадку</h3>
         <ol>
           <li data-step="1">Слушайте ATIS (131.300) для получения актуальной информации</li>
@@ -380,40 +376,40 @@
   </div>
 </div>
 
-      <!-- Для полётов ПВП -->
-      <div class="section">
-        <button class="section-header" onclick="toggleSection(this)">
-          <h2 id="vfr"></h2>
-          <span class="arrow">▼</span>
-        </button>
-        <div class="section-content">
-          <div class="info-box">
-            <h3>Правила полётов ПВП в зоне UNNT</h3>
-            <ul>
-              <li>Все полёты ПВП должны быть согласованы с диспетчерской службой</li>
-              <li>Минимальная высота в зоне аэродрома - 1500 футов AGL</li>
-              <li>Запрещены полёты над жилыми массивами на высоте менее 2000 футов</li>
-              <li>Обязательно прослушивание частоты UNNT_ATIS (131.300)</li>
-            </ul>
-          </div>
+<!-- Для полётов ПВП -->
+<div class="accordion-section">
+  <button class="accordion-btn" onclick="toggleSection(this)">
+    <span id="vfr">Для полётов ПВП</span>
+    <span class="accordion-arrow">▼</span>
+  </button>
+  <div class="accordion-content">
+    <div class="info-box">
+      <h3>Правила полётов ПВП в зоне UNNT</h3>
+      <ul>
+        <li>Все полёты ПВП должны быть согласованы с диспетчерской службой</li>
+        <li>Минимальная высота в зоне аэродрома - 1500 футов AGL</li>
+        <li>Запрещены полёты над жилыми массивами на высоте менее 2000 футов</li>
+        <li>Обязательно прослушивание частоты UNNT_ATIS (131.300)</li>
+      </ul>
+    </div>
 
-          <h3>Рекомендуемые маршруты ПВП</h3>
-          <ul>
-            <li><strong>Северный маршрут:</strong> По руслу реки Обь, не заходя в зону UNCC</li>
-            <li><strong>Восточный маршрут:</strong> Вдоль ЛЭП до Бердска, затем вдоль Бердского залива</li>
-            <li><strong>Южный маршрут:</strong> Вдоль автотрассы М-52 до аэродрома Мочище (UNNM)</li>
-          </ul>
+    <h3>Рекомендуемые маршруты ПВП</h3>
+    <ul>
+      <li><strong>Северный маршрут:</strong> По руслу реки Обь, не заходя в зону UNCC</li>
+      <li><strong>Восточный маршрут:</strong> Вдоль ЛЭП до Бердска, затем вдоль Бердского залива</li>
+      <li><strong>Южный маршрут:</strong> Вдоль автотрассы М-52 до аэродрома Мочище (UNNM)</li>
+    </ul>
 
-          <div class="warning">
-            <h3>Ограничения ПВП</h3>
-            <p>В период с 22:00 до 06:00 местного времени полёты ПВП в зоне UNNT запрещены.</p>
-            <p>Максимальная скорость ПВП в радиусе 5 NM от аэродрома - 250 узлов.</p>
-          </div>
+    <div class="warning">
+      <h3>Ограничения ПВП</h3>
+      <p>В период с 22:00 до 06:00 местного времени полёты ПВП в зоне UNNT запрещены.</p>
+      <p>Максимальная скорость ПВП в радиусе 5 NM от аэродрома - 250 узлов.</p>
+    </div>
 
-          <img src="../src/vfr_routes." alt="Карта маршрутов ПВП" class="map-image">
-          <div class="caption">Рекомендуемые маршруты ПВП в районе UNNT</div>
-        </div>
-      </div>
+    <img src="../src/vfr_routes." alt="Карта маршрутов ПВП" class="map-image">
+    <div class="caption">Рекомендуемые маршруты ПВП в районе UNNT</div>
+  </div>
+</div>
     </main>
 
     <footer class="site-footer">
@@ -424,10 +420,9 @@
   <script>
 function toggleSection(button) {
   const section = button.parentElement;
-  const content = section.querySelector('.section-content');
-  const arrow = button.querySelector('.arrow');
+  const content = section.querySelector('.accordion-content');
+  const arrow = button.querySelector('.accordion-arrow');
   
-  // Переключаем класс active для стилизации
   button.classList.toggle('active');
   
   if (content.style.display === 'block') {
@@ -436,7 +431,6 @@ function toggleSection(button) {
   } else {
     content.style.display = 'block';
     arrow.textContent = '▲';
-    // Прокручиваем к секции, если она открывается
     setTimeout(() => {
       section.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     }, 100);
@@ -444,13 +438,15 @@ function toggleSection(button) {
 }
   
     // Close all sections by default
-    document.addEventListener('DOMContentLoaded', function () {
-      document.querySelectorAll('.section-content').forEach(content => {
-        content.style.display = 'none';
-      });
-      document.querySelectorAll('.arrow').forEach(arrow => {
-        arrow.textContent = '►';
-      });
+    document.addEventListener('DOMContentLoaded', function() {
+  // Инициализация всех accordion-content как скрытых
+  document.querySelectorAll('.accordion-content').forEach(content => {
+    content.style.display = 'none';
+  });
+  // Установка стрелок в начальное положение
+  document.querySelectorAll('.accordion-arrow').forEach(arrow => {
+    arrow.textContent = '▼';
+  });
   
       // Инициализация модального окна для изображений
       initImageModal();

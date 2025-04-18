@@ -275,6 +275,15 @@ body {
   padding-bottom: 0.5rem;
 }
 
+.sections-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
 .section-title::after {
   content: "";
   position: absolute;
@@ -551,6 +560,24 @@ body {
   border-radius: var(--radius);
 }
 
+.info-btn {
+  background: linear-gradient(135deg, #3498db, #2980b9);
+}
+
+.departure-btn {
+  background: linear-gradient(135deg, #2ecc71, #27ae60);
+}
+
+.arrival-btn {
+  background: linear-gradient(135deg, #e74c3c, #c0392b);
+}
+
+.vfr-btn {
+  background: linear-gradient(135deg, #9b59b6, #8e44ad);
+}
+
+
+
 .frequency-list {
   columns: 2;
   gap: 1.5rem;
@@ -613,10 +640,11 @@ body {
 
 /* Секции с аккордеоном */
 .section {
-  margin-bottom: 2rem;
-  border-radius: var(--radius);
+  width: 100%;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
   overflow: hidden;
-  box-shadow: var(--shadow);
 }
 
 /* Обновленные стили для блока сценариев и важной информации */
@@ -708,37 +736,127 @@ body {
 
 .section-header {
   width: 100%;
+  padding: 1rem 1.5rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 1.5rem;
-  background-color: var(--primary);
+  background: #2c3e50;
   color: white;
   border: none;
   cursor: pointer;
-  text-align: left;
-  transition: var(--transition);
+  font-size: 1rem;
+  font-weight: 600;
+  transition: background 0.2s;
 }
 
 .section-header:hover {
-  background-color: var(--primary-dark);
+  background: #34495e;
 }
 
 .section-header h2 {
-  color: white;
   margin: 0;
-  font-size: 1.3rem;
+  font-size: 1.1rem;
+  color: inherit;
+}
+
+.section-header.active .arrow {
+  transform: rotate(180deg);
+}
+
+.section-header.active {
+  background: #34495e;
 }
 
 .section-content {
   padding: 1.5rem;
-  background-color: white;
+  background: white;
   display: none;
 }
 
 .arrow {
-  font-size: 0.9em;
   transition: transform 0.3s;
+  font-size: 0.9rem;
+}
+
+/* Базовые стили для аккордеона */
+.accordion-container {
+  width: 100%;
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+.accordion-section {
+  width: 100%;
+  margin-bottom: 10px;
+  box-sizing: border-box;
+}
+
+.accordion-btn {
+  width: 100%;
+  padding: 15px 20px;
+  background: #0066cc;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  text-align: left;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+}
+
+.accordion-btn:hover {
+  background: #0055aa;
+}
+
+.accordion-arrow {
+  transition: transform 0.3s ease;
+  font-size: 14px;
+}
+
+.accordion-content {
+  width: 100%;
+  padding: 20px;
+  background: #fff;
+  border-radius: 0 0 5px 5px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  display: none;
+  box-sizing: border-box;
+  margin-top: -3px;
+  border: 1px solid #ddd;
+  border-top: none;
+}
+
+/* Активное состояние */
+.accordion-btn.active {
+  background: #0055aa;
+  border-radius: 5px 5px 0 0;
+}
+
+.accordion-btn.active .accordion-arrow {
+  transform: rotate(180deg);
+}
+
+/* Гарантия одинаковой ширины */
+.accordion-container * {
+  box-sizing: border-box;
+  max-width: 100%;
+}
+
+/* Дополнительные гарантии для вложенных элементов */
+.accordion-content img,
+.accordion-content table,
+.accordion-content iframe,
+.accordion-content div {
+  max-width: 100%;
+  width: auto;
+  height: auto;
 }
 
 .language-section:not(.active) {
