@@ -374,42 +374,82 @@
       <div class="caption">Основные схемы захода на посадку в UNNT</div>
     </div>
   </div>
-</div>
 
-<!-- Для полётов ПВП -->
-<div class="accordion-section">
-  <button class="accordion-btn" onclick="toggleSection(this)">
-    <span id="vfr">Для полётов ПВП</span>
-    <span class="accordion-arrow">▼</span>
-  </button>
-  <div class="accordion-content">
-    <div class="info-box">
-      <h3>Правила полётов ПВП в зоне UNNT</h3>
-      <ul>
-        <li>Все полёты ПВП должны быть согласованы с диспетчерской службой</li>
-        <li>Минимальная высота в зоне аэродрома - 1500 футов AGL</li>
-        <li>Запрещены полёты над жилыми массивами на высоте менее 2000 футов</li>
-        <li>Обязательно прослушивание частоты UNNT_ATIS (131.300)</li>
-      </ul>
-    </div>
+      <!-- Для полётов ПВП -->
+      <div class="accordion-section">
+        <button class="accordion-btn" onclick="toggleSection(this)">
+          <span id="vfr">Для полётов ПВП</span>
+          <span class="accordion-arrow">▼</span>
+        </button>
+        <div class="accordion-content">
+          <div class="info-box">
+            <h3>Правила полётов ПВП в зоне UNNT</h3>
+            <ul>
+              <li>Все полёты ПВП должны быть согласованы с диспетчерской службой</li>
+              <li>Минимальная высота в зоне аэродрома - 1500 футов AGL</li>
+              <li>Запрещены полёты над жилыми массивами на высоте менее 2000 футов</li>
+              <li>Обязательно прослушивание частоты UNNT_ATIS (131.300)</li>
+            </ul>
+          </div>
 
-    <h3>Рекомендуемые маршруты ПВП</h3>
-    <ul>
-      <li><strong>Северный маршрут:</strong> По руслу реки Обь, не заходя в зону UNCC</li>
-      <li><strong>Восточный маршрут:</strong> Вдоль ЛЭП до Бердска, затем вдоль Бердского залива</li>
-      <li><strong>Южный маршрут:</strong> Вдоль автотрассы М-52 до аэродрома Мочище (UNNM)</li>
-    </ul>
+          <h3 class="section-subtitle">Рекомендуемые маршруты ПВП</h3>
+          
+          <div class="route-grid">
+            <div class="route-card">
+              <h4>Северный маршрут</h4>
+              <p>По руслу реки Обь, не заходя в зону UNCC</p>
+              <div class="route">DCT KOVEL R474 TOMSK</div>
+            </div>
+            
+            <div class="route-card">
+              <h4>Восточный маршрут</h4>
+              <p>Вдоль ЛЭП до Бердска, затем вдоль Бердского залива</p>
+              <div class="route">DCT NERUL R343 NILKA</div>
+            </div>
+            
+            <div class="route-card">
+              <h4>Южный маршрут</h4>
+              <p>Вдоль автотрассы М-52 до аэродрома Мочище (UNNM)</p>
+              <div class="route">DCT TULUN B453 KADIR</div>
+            </div>
+          </div>
 
-    <div class="warning">
-      <h3>Ограничения ПВП</h3>
-      <p>В период с 22:00 до 06:00 местного времени полёты ПВП в зоне UNNT запрещены.</p>
-      <p>Максимальная скорость ПВП в радиусе 5 NM от аэродрома - 250 узлов.</p>
-    </div>
+          <div class="section-warning">
+            <h3>Ограничения ПВП</h3>
+            <p>В период с 22:00 до 06:00 местного времени полёты ПВП в зоне UNNT запрещены.</p>
+            <p>Максимальная скорость ПВП в радиусе 5 NM от аэродрома - 250 узлов.</p>
+          </div>
 
-    <img src="../src/vfr_routes." alt="Карта маршрутов ПВП" class="map-image">
-    <div class="caption">Рекомендуемые маршруты ПВП в районе UNNT</div>
-  </div>
-</div>
+          <h3 class="section-subtitle">Частоты для ПВП</h3>
+          
+          <div class="frequency-grid">
+            <div class="frequency-item">
+              <div>
+                <div class="frequency-name">UNNT_R2_APP (ПВП)</div>
+                <div class="frequency-value">133.800</div>
+              </div>
+            </div>
+            
+            <div class="frequency-item">
+              <div>
+                <div class="frequency-name">UNNT_TWR (ПВП)</div>
+                <div class="frequency-value">118.500</div>
+              </div>
+            </div>
+            
+            <div class="frequency-item">
+              <div>
+                <div class="frequency-name">UNNM_CTAF</div>
+                <div class="frequency-value">122.100</div>
+              </div>
+            </div>
+          </div>
+
+          <img src="../src/vfr_routes.png" alt="Карта маршрутов ПВП" class="map-image">
+          <div class="caption">Рекомендуемые маршруты ПВП в районе UNNT</div>
+        </div>
+      </div>
+      </div>
     </main>
 
     <footer class="site-footer">
