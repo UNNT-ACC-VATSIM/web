@@ -116,12 +116,12 @@
         </div>
       </div>
       <!-- Общая информация -->
-      <div class="accordion-section">
+      <div class="accordion-item">
         <button class="accordion-btn" onclick="toggleSection(this)">
-          <span id="general-info">Общая информация</span>
+          <span>Общая информация</span>
           <span class="accordion-arrow">▼</span>
         </button>
-        <div class="accordion-content">
+        <div class="accordion-panel">
           <div class="info-box">
             <h3 id="params-title"></h3>
             <ul>
@@ -225,12 +225,12 @@
       </div>
 
       <!-- Для вылетающих -->
-      <div class="accordion-section">
+      <div class="accordion-item">
         <button class="accordion-btn" onclick="toggleSection(this)">
-          <span id="dep">Для вылетающих</span>
+          <span>Для вылетающих</span>
           <span class="accordion-arrow">▼</span>
         </button>
-        <div class="accordion-content">
+        <div class="accordion-panel">
           <div class="info-box">
         <h3>Процедура вылета</h3>
         <ol>
@@ -283,12 +283,12 @@
 </div>
 
 <!-- Для прилетающих -->
-<div class="accordion-section">
+<div class="accordion-item">
   <button class="accordion-btn" onclick="toggleSection(this)">
-    <span id="arr">Для прилетающих</span>
+    <span>Для прилетающих</span>
     <span class="accordion-arrow">▼</span>
   </button>
-  <div class="accordion-content">
+  <div class="accordion-panel">
     <div class="info-box">
         <h3>Процедура захода на посадку</h3>
         <ol>
@@ -376,12 +376,12 @@
   </div>
 
       <!-- Для полётов ПВП -->
-      <div class="accordion-section">
+      <div class="accordion-item">
         <button class="accordion-btn" onclick="toggleSection(this)">
-          <span id="vfr">Для полётов ПВП</span>
+          <span>Для полётов ПВП</span>
           <span class="accordion-arrow">▼</span>
         </button>
-        <div class="accordion-content">
+        <div class="accordion-panel">
           <div class="info-box">
             <h3>Правила полётов ПВП в зоне UNNT</h3>
             <ul>
@@ -448,7 +448,6 @@
           <img src="../src/vfr_routes.png" alt="Карта маршрутов ПВП" class="map-image">
           <div class="caption">Рекомендуемые маршруты ПВП в районе UNNT</div>
         </div>
-      </div>
       </div>
     </main>
 
@@ -748,6 +747,14 @@ document.addEventListener('DOMContentLoaded', function() {
     link.style.setProperty('--i', index);
   });
 });
+
+function toggleSection(button) {
+    const item = button.closest('.accordion-item');
+    const panel = item.querySelector('.accordion-panel');
+    
+    button.classList.toggle('active');
+    panel.style.display = panel.style.display === 'block' ? 'none' : 'block';
+  }
 
 // Обновление времени в виджете
 document.addEventListener('DOMContentLoaded', function() {
