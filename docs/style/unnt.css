@@ -584,6 +584,10 @@ body {
   border-radius: 8px 8px 8px 8px;
 }
 
+.accordion-btn.active + .accordion-panel {
+  display: block;
+}
+
 .accordion-btn:hover {
   background: #0055aa;
 }
@@ -598,22 +602,21 @@ body {
   width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 8px; /* Фиксированное расстояние между всеми элементами */
+  gap: 12px; /* Теперь это единственный источник отступов между элементами */
 }
 
 .accordion-item {
   width: 100%;
-  margin: 0;
+  margin: 0; /* Убираем все маржины */
   padding: 0;
   border-radius: 8px;
   overflow: hidden;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease;
-  margin-bottom: 24px; /* Добавлен этот отступ */
 }
 
 .vfr-section {
-  margin-top: 12px;
+  margin-top: 30px;
 }
 
 .accordion-item:hover {
@@ -647,11 +650,12 @@ body {
 }
 
 .accordion-panel {
-  width: 100%;
-  padding: 20px;
-  background: #fff;
   display: none;
-  border-top: 1px solid #e0e0e0;
+  padding: 20px;
+  background-color: white;
+  border: 1px solid #ddd;
+  border-top: none;
+  border-radius: 0 0 8px 8px;
 }
 
 .accordion-btn.active .accordion-arrow {
