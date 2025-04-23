@@ -580,7 +580,8 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  transition: background 0.2s ease;
+  transition: all 0.3s ease;
+  border-radius: 8px 8px 8px 8px;
 }
 
 .accordion-btn:hover {
@@ -608,6 +609,11 @@ body {
   overflow: hidden;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease;
+  margin-bottom: 24px; /* Добавлен этот отступ */
+}
+
+.vfr-section {
+  margin-top: 12px;
 }
 
 .accordion-item:hover {
@@ -637,6 +643,7 @@ body {
 
 .accordion-btn.active {
   background: #004080;
+  border-radius: 8px 8px 8px 8px;
 }
 
 .accordion-panel {
