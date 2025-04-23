@@ -121,10 +121,10 @@
           <span>Общая информация</span>
           <span class="accordion-arrow">▼</span>
         </button>
-        <div class="accordion-panel">
-          <div class="info-box">
-            <h3 id="params-title"></h3>
-            <ul>
+        <div class="accordion-panel general-info-content">
+          <div class="info-box highlight-box">
+            <h3 id="params-title">Основные параметры</h3>
+            <ul class="styled-list">
               <li><strong>Код ИКАО:</strong> UNNT</li>
               <li><strong>Код ИАТА:</strong> OVB</li>
               <li><strong>Высота над уровнем моря:</strong> 368 футов (111 метров)</li>
@@ -132,14 +132,14 @@
             </ul>
           </div>
 
-          <div class="image-grid">
-            <div>
-              <img src="../src/UNNT_terminal.jpg" alt="Терминал аэропорта Толмачёво">
-              <div class="caption" id="terminal-caption"></div>
+          <div class="image-pair-container">
+            <div class="small-image-wrapper">
+              <img src="../src/UNNT_terminal.jpg" alt="Терминал аэропорта Толмачёво" class="small-image">
+              <div class="caption" id="terminal-caption">Пассажирский терминал аэропорта</div>
             </div>
-            <div>
-              <img src="../src/UNNT_visota.jpg" alt="Аэропорт с высоты">
-              <div class="caption" id="aerial-caption"></div>
+            <div class="small-image-wrapper">
+              <img src="../src/UNNT_visota.jpg" alt="Аэропорт с высоты" class="small-image">
+              <div class="caption" id="aerial-caption">Вид на аэропорт с воздуха</div>
             </div>
           </div>
 
@@ -475,11 +475,10 @@ function toggleSection(button) {
     }, 100);
   }
 }
-  
-    // Close all sections by default
-    document.addEventListener('DOMContentLoaded', function() {
+
+document.addEventListener('DOMContentLoaded', function() {
   // Инициализация всех accordion-content как скрытых
-  document.querySelectorAll('.accordion-content').forEach(content => {
+  document.querySelectorAll('.accordion-panel').forEach(content => {
     content.style.display = 'none';
   });
   // Установка стрелок в начальное положение
@@ -487,15 +486,15 @@ function toggleSection(button) {
     arrow.textContent = '▼';
   });
   
-      // Инициализация модального окна для изображений
-      initImageModal();
+  // Инициализация модального окна для изображений
+  initImageModal();
   
-      // Установка языка
-      const savedLang = localStorage.getItem('preferredLanguage');
-      const browserLang = navigator.language.startsWith('ru') ? 'ru' : 'en';
-      const defaultLang = savedLang || browserLang;
-      switchLanguage(defaultLang);
-    });
+  // Установка языка
+  const savedLang = localStorage.getItem('preferredLanguage');
+  const browserLang = navigator.language.startsWith('ru') ? 'ru' : 'en';
+  const defaultLang = savedLang || browserLang;
+  switchLanguage(defaultLang);
+});
   
     // Modal image viewer
     function initImageModal() {
