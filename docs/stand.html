@@ -25,6 +25,7 @@
       background: var(--white);
       border-radius: 16px;
       box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+      position: relative;
     }
 
     h1 {
@@ -40,19 +41,46 @@
       color: #333;
     }
 
-    input, select {
+    .search-wrapper {
+      position: relative;
+    }
+
+    #aircraft-input {
       width: 100%;
       padding: 12px;
       font-size: 16px;
-      margin-bottom: 16px;
       border: 1px solid #ccc;
       border-radius: 8px;
       outline: none;
     }
 
-    input:focus, select:focus {
+    #aircraft-input:focus {
       border-color: var(--main-color);
       box-shadow: 0 0 0 2px rgba(25, 118, 210, 0.2);
+    }
+
+    .autocomplete-list {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      z-index: 10;
+      border: 1px solid #ccc;
+      border-top: none;
+      background: white;
+      border-radius: 0 0 8px 8px;
+      max-height: 200px;
+      overflow-y: auto;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .autocomplete-item {
+      padding: 10px;
+      cursor: pointer;
+    }
+
+    .autocomplete-item:hover {
+      background: #e3f2fd;
     }
 
     #map {
@@ -75,14 +103,11 @@
 <div class="container">
   <h1>Стоянки ВС — Толмачёво (Новосибирск)</h1>
 
-  <label for="aircraft-input">Поиск типа ВС:</label>
-  <input type="text" id="aircraft-input" placeholder="Например A3" list="suggestions">
-  <datalist id="suggestions"></datalist>
-
-  <label for="aircraft-select">Выбрать тип ВС:</label>
-  <select id="aircraft-select">
-    <option value="">-- Выберите --</option>
-  </select>
+  <label for="aircraft-input">Введите тип ВС:</label>
+  <div class="search-wrapper">
+    <input type="text" id="aircraft-input" placeholder="Например A3...">
+    <div id="autocomplete-list" class="autocomplete-list"></div>
+  </div>
 
   <div id="map"></div>
 </div>
@@ -113,48 +138,38 @@
     "SSJ100": [
       { lat: 55.0123, lng: 82.6509, name: "Стоянка D1" }
     ]
-    // Другие можно добавить аналогично
   };
 
   const input = document.getElementById("aircraft-input");
-  const datalist = document.getElementById("suggestions");
-  const select = document.getElementById("aircraft-select");
-
-  allTypes.forEach(type => {
-    const option1 = document.createElement("option");
-    option1.value = type;
-    datalist.appendChild(option1);
-
-    const option2 = document.createElement("option");
-    option2.value = type;
-    option2.textContent = type;
-    select.appendChild(option2);
-  });
+  const list = document.getElementById("autocomplete-list");
 
   input.addEventListener("input", () => {
-    const value = input.value.toUpperCase();
-    const filtered = allTypes.filter(t => t.startsWith(value));
-    datalist.innerHTML = "";
-    filtered.forEach(match => {
-      const opt = document.createElement("option");
-      opt.value = match;
-      datalist.appendChild(opt);
+    const val = input.value.toUpperCase();
+    list.innerHTML = "";
+    if (!val) return;
+
+    const matches = allTypes.filter(t => t.startsWith(val));
+    matches.forEach(match => {
+      const div = document.createElement("div");
+      div.textContent = match;
+      div.className = "autocomplete-item";
+      div.onclick = () => {
+        input.value = match;
+        list.innerHTML = "";
+        updateMarkers(match);
+      };
+      list.appendChild(div);
     });
   });
 
-  input.addEventListener("change", () => {
-    select.value = input.value;
-    updateMarkers(input.value);
+  document.addEventListener("click", (e) => {
+    if (!e.target.closest(".search-wrapper")) {
+      list.innerHTML = "";
+    }
   });
 
-  select.addEventListener("change", () => {
-    input.value = select.value;
-    updateMarkers(select.value);
-  });
-
-  // Центр карты — КТА UNNT
+  // Leaflet map init (КТА Толмачёво)
   const map = L.map("map").setView([55.0117, 82.6517], 17);
-
   L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
     maxZoom: 19,
     attribution: "&copy; OpenStreetMap"
@@ -174,9 +189,7 @@
         markers.push(marker);
       });
 
-      if (standsByType[type].length) {
-        map.setView([standsByType[type][0].lat, standsByType[type][0].lng], 18);
-      }
+      map.setView([standsByType[type][0].lat, standsByType[type][0].lng], 18);
     }
   }
 </script>
