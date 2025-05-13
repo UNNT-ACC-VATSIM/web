@@ -1,1 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Поиск стоянок для ВС</title>
+  <meta charset="UTF-8">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+    #search-container {
+      margin-bottom: 20px;
+    }
+    #map {
+      height: 500px;
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+  <div id="search-container">
+    <label for="type-select">Введите тип ВС:</label><br>
+    <input type="text" id="aircraft-type" placeholder="Например, A32X" list="type-list">
+    <datalist id="type-list"></datalist>
+  </div>
+
+  <div id="map"></div>
+
+  <script>
+    const typeMapping = {
+      "A32X": ["A320", "A321"],
+      "B73X": ["B737-700", "B737-800"],
+      "E-JET": ["E170", "E190"]
+    };
+
+    const standsByType = {
+      "A320": [{ lat: 55.972, lng: 37.414, name: "Стоянка 1" }, { lat: 55.974, lng: 37.416, name: "Стоянка 2" }],
+      "A321": [{ lat: 55.971, lng: 37.413, name: "Стоянка 3" }],
+      "B737-700": [{ lat: 55.970, lng: 37.412, name: "Стоянка 4" }],
+      "B737-800": [{ lat: 55.969, lng: 37.410, name: "Стоянка 5" }],
+      "E170": [{ lat: 55.968, lng: 37.408, name: "Стоянка 6" }],
+      "E190": [{ lat: 55.967, lng: 37.406, name: "Стоянка 7" }]
+    };
+
+    const input = document.getElementById("aircraft-type");
+    const datalist = document.getElementById("type-list");
+
+    input.addEventListener("input", () => {
+      const key = input.value.toUpperCase();
+      datalist.innerHTML = "";
+      if (typeMapping[key]) {
+        typeMapping[key].forEach(type => {
+          const option = document.createElement("option");
+          option.value = type;
+          datalist.appendChild(option);
+        });
+      }
+    });
+
+    let map;
+    let markers = [];
+
+    function initMap() {
+      map = new google.maps.Map(document.getElementById("map"), {
+        center: { lat: 55.971, lng: 37.413 },
+        zoom: 16,
+      });
+
+      input.addEventListener("change", () => {
+        const selectedType = input.value;
+        updateMarkers(selectedType);
+      });
+    }
+
+    function updateMarkers(type) {
+      markers.forEach(marker => marker.setMap(null));
+      markers = [];
+
+      if (standsByType[type]) {
+        standsByType[type].forEach(stand => {
+          const marker = new google.maps.Marker({
+            position: { lat: stand.lat, lng: stand.lng },
+            map,
+            title: stand.name
+          });
+          markers.push(marker);
+        });
+      }
+    }
+  </script>
+
+  <script async
+    src="https://maps.googleapis.com/maps/api/js?key=YOUR_GOOGLE_MAPS_API_KEY&callback=initMap">
+  </script>
+</body>
+</html>
 
