@@ -1,97 +1,185 @@
 <!DOCTYPE html>
-<html>
+<html lang="ru">
 <head>
-  <title>Поиск стоянок для ВС</title>
   <meta charset="UTF-8">
+  <title>Стоянки ВС — Толмачёво</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
   <style>
+    :root {
+      --main-color: #1976d2;
+      --background: #f0f4f8;
+      --white: #ffffff;
+    }
+
     body {
-      font-family: Arial, sans-serif;
+      margin: 0;
+      font-family: "Segoe UI", sans-serif;
+      background: var(--background);
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 30px auto;
       padding: 20px;
+      background: var(--white);
+      border-radius: 16px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
     }
-    #search-container {
-      margin-bottom: 20px;
+
+    h1 {
+      text-align: center;
+      color: var(--main-color);
+      margin-bottom: 24px;
     }
+
+    label {
+      display: block;
+      margin-bottom: 6px;
+      font-weight: bold;
+      color: #333;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 12px;
+      font-size: 16px;
+      margin-bottom: 16px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      outline: none;
+    }
+
+    input:focus, select:focus {
+      border-color: var(--main-color);
+      box-shadow: 0 0 0 2px rgba(25, 118, 210, 0.2);
+    }
+
     #map {
       height: 500px;
       width: 100%;
+      border-radius: 16px;
+      margin-top: 20px;
+    }
+
+    .footer {
+      text-align: center;
+      color: #888;
+      margin-top: 20px;
+      font-size: 13px;
     }
   </style>
 </head>
 <body>
-  <div id="search-container">
-    <label for="type-select">Введите тип ВС:</label><br>
-    <input type="text" id="aircraft-type" placeholder="Например, A32X" list="type-list">
-    <datalist id="type-list"></datalist>
-  </div>
+
+<div class="container">
+  <h1>Стоянки ВС — Толмачёво (Новосибирск)</h1>
+
+  <label for="aircraft-input">Поиск типа ВС:</label>
+  <input type="text" id="aircraft-input" placeholder="Например A3" list="suggestions">
+  <datalist id="suggestions"></datalist>
+
+  <label for="aircraft-select">Выбрать тип ВС:</label>
+  <select id="aircraft-select">
+    <option value="">-- Выберите --</option>
+  </select>
 
   <div id="map"></div>
+</div>
 
-  <script>
-    const typeMapping = {
-      "A32X": ["A320", "A321"],
-      "B73X": ["B737-700", "B737-800"],
-      "E-JET": ["E170", "E190"]
-    };
+<div class="footer">© 2025 Аэропорт Толмачёво. Все права защищены.</div>
 
-    const standsByType = {
-      "A320": [{ lat: 55.972, lng: 37.414, name: "Стоянка 1" }, { lat: 55.974, lng: 37.416, name: "Стоянка 2" }],
-      "A321": [{ lat: 55.971, lng: 37.413, name: "Стоянка 3" }],
-      "B737-700": [{ lat: 55.970, lng: 37.412, name: "Стоянка 4" }],
-      "B737-800": [{ lat: 55.969, lng: 37.410, name: "Стоянка 5" }],
-      "E170": [{ lat: 55.968, lng: 37.408, name: "Стоянка 6" }],
-      "E190": [{ lat: 55.967, lng: 37.406, name: "Стоянка 7" }]
-    };
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+<script>
+  const allTypes = [
+    "A318", "A319", "A320", "A321", "A330", "A350",
+    "B737-300", "B737-400", "B737-500", "B737-700", "B737-800", "B737-MAX",
+    "B747", "B757", "B767", "B777", "B787",
+    "E170", "E175", "E190", "E195",
+    "SSJ100", "TU-204", "IL-96", "CRJ-200", "AN-148", "MC-21", "Yak-42"
+  ];
 
-    const input = document.getElementById("aircraft-type");
-    const datalist = document.getElementById("type-list");
+  const standsByType = {
+    "A320": [
+      { lat: 55.0121, lng: 82.6523, name: "Стоянка A1" },
+      { lat: 55.0124, lng: 82.6530, name: "Стоянка A2" }
+    ],
+    "B737-800": [
+      { lat: 55.0119, lng: 82.6518, name: "Стоянка B1" }
+    ],
+    "E170": [
+      { lat: 55.0126, lng: 82.6512, name: "Стоянка C1" }
+    ],
+    "SSJ100": [
+      { lat: 55.0123, lng: 82.6509, name: "Стоянка D1" }
+    ]
+    // Другие можно добавить аналогично
+  };
 
-    input.addEventListener("input", () => {
-      const key = input.value.toUpperCase();
-      datalist.innerHTML = "";
-      if (typeMapping[key]) {
-        typeMapping[key].forEach(type => {
-          const option = document.createElement("option");
-          option.value = type;
-          datalist.appendChild(option);
-        });
-      }
+  const input = document.getElementById("aircraft-input");
+  const datalist = document.getElementById("suggestions");
+  const select = document.getElementById("aircraft-select");
+
+  allTypes.forEach(type => {
+    const option1 = document.createElement("option");
+    option1.value = type;
+    datalist.appendChild(option1);
+
+    const option2 = document.createElement("option");
+    option2.value = type;
+    option2.textContent = type;
+    select.appendChild(option2);
+  });
+
+  input.addEventListener("input", () => {
+    const value = input.value.toUpperCase();
+    const filtered = allTypes.filter(t => t.startsWith(value));
+    datalist.innerHTML = "";
+    filtered.forEach(match => {
+      const opt = document.createElement("option");
+      opt.value = match;
+      datalist.appendChild(opt);
     });
+  });
 
-    let map;
-    let markers = [];
+  input.addEventListener("change", () => {
+    select.value = input.value;
+    updateMarkers(input.value);
+  });
 
-    function initMap() {
-      map = new google.maps.Map(document.getElementById("map"), {
-        center: { lat: 55.971, lng: 37.413 },
-        zoom: 16,
+  select.addEventListener("change", () => {
+    input.value = select.value;
+    updateMarkers(select.value);
+  });
+
+  // Центр карты — КТА UNNT
+  const map = L.map("map").setView([55.0117, 82.6517], 17);
+
+  L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+    maxZoom: 19,
+    attribution: "&copy; OpenStreetMap"
+  }).addTo(map);
+
+  let markers = [];
+
+  function updateMarkers(type) {
+    markers.forEach(m => map.removeLayer(m));
+    markers = [];
+
+    if (standsByType[type]) {
+      standsByType[type].forEach(stand => {
+        const marker = L.marker([stand.lat, stand.lng])
+          .addTo(map)
+          .bindPopup(`<b>${stand.name}</b><br>Тип: ${type}`);
+        markers.push(marker);
       });
 
-      input.addEventListener("change", () => {
-        const selectedType = input.value;
-        updateMarkers(selectedType);
-      });
-    }
-
-    function updateMarkers(type) {
-      markers.forEach(marker => marker.setMap(null));
-      markers = [];
-
-      if (standsByType[type]) {
-        standsByType[type].forEach(stand => {
-          const marker = new google.maps.Marker({
-            position: { lat: stand.lat, lng: stand.lng },
-            map,
-            title: stand.name
-          });
-          markers.push(marker);
-        });
+      if (standsByType[type].length) {
+        map.setView([standsByType[type][0].lat, standsByType[type][0].lng], 18);
       }
     }
-  </script>
+  }
+</script>
 
-  <script async
-    src="https://maps.googleapis.com/maps/api/js?key=YOUR_GOOGLE_MAPS_API_KEY&callback=initMap">
-  </script>
 </body>
 </html>
-
