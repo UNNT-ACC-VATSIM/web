@@ -43,6 +43,8 @@
 
     .search-wrapper {
       position: relative;
+      z-index: 1000; /* Autocomplete above the map */
+      margin-bottom: 16px; /* Space between search and map */
     }
 
     #aircraft-input {
@@ -64,14 +66,14 @@
       top: 100%;
       left: 0;
       right: 0;
-      z-index: 10;
-      border: 1px solid #ccc;
-      border-top: none;
-      background: white;
-      border-radius: 0 0 8px 8px;
       max-height: 200px;
       overflow-y: auto;
+      background: white;
+      border: 1px solid #ccc;
+      border-top: none;
+      border-radius: 0 0 8px 8px;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      z-index: 1001;
     }
 
     .autocomplete-item {
